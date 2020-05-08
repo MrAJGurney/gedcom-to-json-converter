@@ -1,6 +1,6 @@
 'use strict';
 
-const convertGedcomToFmp = () => {
+const buildFmpTreeFromGedcom = () => {
 	return {
 		'Persons': [],
 		'Familys': [],
@@ -13,5 +13,5 @@ const convertGedcomToFmp = () => {
 };
 
 module.exports = {
-	convertGedcomToFmp,
+	buildFmpTreeFromGedcom,
 };

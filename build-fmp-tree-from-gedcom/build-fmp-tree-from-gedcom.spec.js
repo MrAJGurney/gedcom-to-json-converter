@@ -1,8 +1,8 @@
 'use strict';
 
-const { convertGedcomToFmp, } = require('./convert-gedcom-to-fmp');
+const { buildFmpTreeFromGedcom, } = require('./build-fmp-tree-from-gedcom');
 
-describe('convertGedcomToFmp', () => {
+describe('buildFmpTreeFromGedcom', () => {
 	describe('when empty gedcom text is parsed', () => {
 		const gedcom = '';
 
@@ -16,7 +16,7 @@ describe('convertGedcomToFmp', () => {
 			'FactTypes',
 		];
 
-		const actual = convertGedcomToFmp(gedcom);
+		const actual = buildFmpTreeFromGedcom(gedcom);
 
 		describe.each(expectedProperties)(
 			'result.%s',
