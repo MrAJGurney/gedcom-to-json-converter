@@ -1,0 +1,20 @@
+{
+  "name": "gedcom-parser",
+  "version": "1.0.0",
+  "description": "convert family tree from gedcom format into FMP format",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint --fix \"./**/*.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/findmypast/coding-challenge/blob/master/challenge-2/andrew/"
+  },
+  "author": "https://github.com/MrAJGurney/",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "jest": "^26.0.1"
+  }
+}
