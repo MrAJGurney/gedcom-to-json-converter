@@ -1,31 +1,25 @@
 'use strict';
 
-const parseGedcomLine = line => {
+const getLevel = line => {
 	const lineComponents = line.split(' ');
-	return {
-		level: getLevel(lineComponents),
-		xrefId: getXrefId(lineComponents),
-		tag: getTag(lineComponents),
-		lineValue: getLineValue(lineComponents),
-	};
-};
-
-const getLevel = lineComponents => {
 	const levelComponent = lineComponents[0];
 	return parseInt(levelComponent, 10);
 };
 
-const getXrefId = lineComponents => {
+const getXrefId = line => {
+	const lineComponents = line.split(' ');
 	const xrefIdComponent = lineComponents[1];
 	return isXrefId(xrefIdComponent) ? xrefIdComponent : null;
 };
 
-const getTag = lineComponents => {
+const getTag = line => {
+	const lineComponents = line.split(' ');
 	const tagComponentIndex = isXrefId(lineComponents[1]) ? 2 : 1;
 	return lineComponents[tagComponentIndex];
 };
 
-const getLineValue = lineComponents => {
+const getLineValue = line => {
+	const lineComponents = line.split(' ');
 	const lineValueComponentStartIndex = isXrefId(lineComponents[1]) ? 3 : 2;
 	return lineValueComponentStartIndex >= lineComponents.length
 		? null
@@ -43,5 +37,8 @@ const buildLineValue = (lineComponents, lineValueComponentStartIndex) => {
 };
 
 module.exports = {
-	parseGedcomLine,
+	getLevel,
+	getXrefId,
+	getTag,
+	getLineValue,
 };

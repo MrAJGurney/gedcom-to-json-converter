@@ -1,8 +1,8 @@
 'use strict';
 
-const { buildFmpTreeFromGedcom, } = require('./build-fmp-tree-from-gedcom');
+const { buildFmpTree, } = require('./build-fmp-tree');
 
-describe('buildFmpTreeFromGedcom', () => {
+describe('buildFmpTree', () => {
 	describe('when empty gedcom text is parsed', () => {
 		const gedcom = '';
 
@@ -16,7 +16,7 @@ describe('buildFmpTreeFromGedcom', () => {
 			'FactTypes',
 		];
 
-		const actual = buildFmpTreeFromGedcom(gedcom);
+		const actual = buildFmpTree(gedcom);
 
 		describe.each(expectedProperties)(
 			'result.%s',

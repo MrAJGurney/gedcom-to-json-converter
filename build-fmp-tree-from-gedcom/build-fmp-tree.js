@@ -1,6 +1,6 @@
 'use strict';
 
-const buildFmpTreeFromGedcom = () => {
+const buildFmpTree = () => {
 	return {
 		'Persons': [],
 		'Familys': [],
@@ -13,5 +13,5 @@ const buildFmpTreeFromGedcom = () => {
 };
 
 module.exports = {
-	buildFmpTreeFromGedcom,
+	buildFmpTree,
 };
