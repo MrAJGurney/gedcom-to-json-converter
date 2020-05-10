@@ -29,12 +29,28 @@ const structureGedcom = (gedcomLines, initialLineIndex = 0) => {
 			structuredGedcom[tag] = [];
 		}
 
-		structuredGedcom[tag].push({
-			value: currentLine,
-		});
+		const structuredSubsection =
+			lineHasChildLines(gedcomLines, lineIndex)
+				? structureGedcom(gedcomLines, lineIndex + 1)
+				: {};
+
+		structuredSubsection.value = currentLine;
+
+		structuredGedcom[tag].push(structuredSubsection);
 	}
 
 	return structuredGedcom;
+};
+
+const lineHasChildLines = (gedcomLines, lineIndex) => {
+	if (lineIndex === gedcomLines.length - 1) {
+		return false;
+	}
+
+	const currentLine = gedcomLines[lineIndex];
+	const nextLine = gedcomLines[lineIndex + 1];
+
+	return getLevel(currentLine) < getLevel(nextLine);
 };
 
 module.exports = {
