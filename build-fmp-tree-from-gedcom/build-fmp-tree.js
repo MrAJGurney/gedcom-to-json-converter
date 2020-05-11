@@ -1,8 +1,14 @@
 'use strict';
 
-const buildFmpTree = () => {
+const {structureGedcom} = require('./structure-gedcom');
+const {buildFmpPerson} = require('./build-fmp-person');
+
+const buildFmpTree = gedcomLines => {
+
+	const structuredGedcom = structureGedcom(gedcomLines);
+
 	return {
-		'Persons': [],
+		'Persons': buildPersons(structuredGedcom),
 		'Familys': [],
 		'Childs': [],
 		'SourceRepos': [],
@@ -10,6 +16,21 @@ const buildFmpTree = () => {
 		'Medias': [],
 		'FactTypes': [],
 	};
+};
+
+const buildPersons = structuredGedcom => {
+	const gedcomIndividualTag = 'INDI';
+
+	if (!structuredGedcom.hasOwnProperty(gedcomIndividualTag)) {
+		return [];
+	}
+
+	const gedcomIndividuals = structuredGedcom[gedcomIndividualTag];
+	const fmpPersons = gedcomIndividuals.map(
+		gedcomIndividual => buildFmpPerson(gedcomIndividual)
+	);
+
+	return fmpPersons;
 };
 
 module.exports = {
