@@ -6,9 +6,13 @@ const { buildFmpPerson, } = require('./build-fmp-person');
 const buildFmpTree = gedcomLines => {
 
 	const structuredGedcom = structureGedcom(gedcomLines);
+	const fmpPersons = buildPersons(structuredGedcom);
+
+	const personId = idGenerator(1000000, 1);
+	fmpPersons.forEach(person => person.Id = personId.next().value);
 
 	return {
-		'Persons': buildPersons(structuredGedcom),
+		'Persons': fmpPersons,
 		'Familys': [],
 		'Childs': [],
 		'SourceRepos': [],
@@ -17,6 +21,14 @@ const buildFmpTree = gedcomLines => {
 		'FactTypes': [],
 	};
 };
+
+function* idGenerator(initialValue, increment) {
+	let value = initialValue;
+	while (true) {
+		yield value;
+		value += increment;
+	}
+}
 
 const buildPersons = structuredGedcom => {
 	const gedcomIndividualTag = 'INDI';

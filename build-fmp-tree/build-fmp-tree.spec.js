@@ -65,7 +65,9 @@ describe('buildFmpTree', () => {
 			'0 TRLR',
 		];
 
-		it('returns an empty FMP tree', () => {
+		const actualFmpTree = buildFmpTree(gedcomLines);
+
+		it('constructs the expected FMP tree', () => {
 			const expectedFmpTree = {
 				'Persons': [
 				  {
@@ -99,9 +101,11 @@ describe('buildFmpTree', () => {
 				'FactTypes': [],
 			  };
 
-			const actualFmpTree = buildFmpTree(gedcomLines);
+			expect(actualFmpTree).toMatchObject(expectedFmpTree);
+		});
 
-			expect(actualFmpTree).toStrictEqual(expectedFmpTree);
+		it('constructs a person with an id which is a number', () => {
+			expect(typeof actualFmpTree.Persons[0].Id).toStrictEqual('number');
 		});
 	});
 });
