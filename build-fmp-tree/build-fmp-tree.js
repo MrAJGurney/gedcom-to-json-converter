@@ -1,7 +1,7 @@
 'use strict';
 
-const {structureGedcom} = require('./structure-gedcom');
-const {buildFmpPerson} = require('./build-fmp-person');
+const { structureGedcom, } = require('./structure-gedcom');
+const { buildFmpPerson, } = require('./build-fmp-person');
 
 const buildFmpTree = gedcomLines => {
 
