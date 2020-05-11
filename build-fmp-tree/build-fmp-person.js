@@ -33,6 +33,10 @@ const buildGender = structuredGedcomIndividual => {
 		unknown: 0,
 	};
 
+	if (!structuredGedcomIndividual.hasOwnProperty(gedcomSexTag)) {
+		return fmpSexValues.unknown;
+	}
+
 	const structuredGedcomSex = structuredGedcomIndividual[gedcomSexTag][0];
 
 	switch (getLineValue(structuredGedcomSex.value)) {
@@ -54,17 +58,20 @@ const buildDateCreated = structuredGedcomIndividual => {
 		[gedcomChangeTag][0]
 		[gedcomDateTag][0];
 
-	const structuredGedcomTime = structuredGedcomDate
-		[gedcomTimeTag][0];
+	const gedcomDateTimeValues = [getLineValue(structuredGedcomDate.value), ];
 
-	const gedcomDateValue = getLineValue(structuredGedcomDate.value);
-	const gedcomTimeValue = getLineValue(structuredGedcomTime.value);
+	if (structuredGedcomDate.hasOwnProperty(gedcomTimeTag)) {
+		const structuredGedcomTime = structuredGedcomDate[gedcomTimeTag][0];
+		gedcomDateTimeValues.push(getLineValue(structuredGedcomTime.value));
+	}
 
-	const gedcomDateTimeValue = [gedcomDateValue, gedcomTimeValue, ].join(' ');
+	const combinedDateTimeValue = gedcomDateTimeValues.join(' ');
 
-	const epoch = Date.parse(gedcomDateTimeValue);
+	const epoch = Date.parse(combinedDateTimeValue);
 	const millisecondsInMinute = 60 * 1000;
-	const timezoneOffset = (new Date(gedcomDateTimeValue)).getTimezoneOffset();
+	const timezoneOffset = (
+		new Date(combinedDateTimeValue)
+	).getTimezoneOffset();
 
 	const fmpDateWithTail = new Date(
 		epoch - (timezoneOffset * millisecondsInMinute)
@@ -97,22 +104,34 @@ const buildFacts = structuredGedcomIndividual => {
 	const gedcomDateTag = 'DATE';
 	const gedcomPlaceTag = 'PLAC';
 
+	if (!structuredGedcomIndividual.hasOwnProperty(gedcomBirthTag)) {
+		return [];
+	}
 	const structuredGedcomBirth = structuredGedcomIndividual[gedcomBirthTag][0];
 
-	const gedcomDate = structuredGedcomBirth[gedcomDateTag][0];
-	const gedcomPlace = structuredGedcomBirth[gedcomPlaceTag][0];
-
-	return [{
+	const birthFact = {
 		'FactTypeId': 405,
-		'DateDetail': getLineValue(gedcomDate.value),
-		'Place': {
-			'PlaceName': getLineValue(gedcomPlace.value),
-		},
 		'Preferred': true,
-	}, ];
+	};
+
+	if (structuredGedcomBirth.hasOwnProperty(gedcomDateTag)) {
+		const gedcomDate = structuredGedcomBirth[gedcomDateTag][0];
+		birthFact['DateDetail'] = getLineValue(gedcomDate.value);
+	}
+
+	if (structuredGedcomBirth.hasOwnProperty(gedcomPlaceTag)) {
+		const gedcomPlace = structuredGedcomBirth[gedcomPlaceTag][0];
+		birthFact['Place'] = {
+			'PlaceName': getLineValue(gedcomPlace.value),
+		};
+	}
+
+	return structuredGedcomBirth.hasOwnProperty(gedcomDateTag)
+		|| structuredGedcomBirth.hasOwnProperty(gedcomPlaceTag)
+		? [birthFact, ]
+		: [];
 };
 
 module.exports =  {
 	buildFmpPerson,
-	buildGender, // exported for 100% test coverage
 };
