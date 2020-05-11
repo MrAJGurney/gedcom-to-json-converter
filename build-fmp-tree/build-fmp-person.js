@@ -2,8 +2,9 @@
 
 const { getLineValue, } = require('./get-gedcom-components');
 
-const buildFmpPerson = structuredGedcomIndividual => {
+const buildFmpPerson = (structuredGedcomIndividual, personId)=> {
 	const fmpPerson = {
+		'Id': personId,
 		'IsLiving': buildIsLiving(structuredGedcomIndividual),
 		'Gender': buildGender(structuredGedcomIndividual),
 		'DateCreated': buildDateCreated(structuredGedcomIndividual),

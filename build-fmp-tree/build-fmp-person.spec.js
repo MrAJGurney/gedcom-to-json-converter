@@ -55,7 +55,9 @@ describe('buildFmpPerson', () => {
 				],
 				'value': '0 @I1@ INDI',
 			},
+			100,
 			{
+				'Id': 100,
 				'IsLiving': true,
 				'Gender': 1,
 				'DateCreated': '2020-04-15T16:38:50',
@@ -124,8 +126,10 @@ describe('buildFmpPerson', () => {
 				],
 				'value': '0 @I2@ INDI',
 			},
+			500,
 			{
-				'IsLiving': true, // Possibly incorrect
+				'Id': 500,
+				'IsLiving': true,
 				'Gender': 2,
 				'DateCreated': '2020-04-15T16:39:15',
 				'Names': [
@@ -185,8 +189,10 @@ describe('buildFmpPerson', () => {
 				],
 				'value': '0 @I3@ INDI',
 			},
+			24,
 			{
-				'IsLiving': true, // Possibly incorrect
+				'Id': 24,
+				'IsLiving': true,
 				'Gender': 1,
 				'DateCreated': '2020-04-15T16:41:07',
 				'Names': [
@@ -203,10 +209,10 @@ describe('buildFmpPerson', () => {
 
 	describe.each(gedcomIndividuals)(
 		'when given a structured gedcom individual',
-		(structuredGedcomIndividual, expectedFmpPerson) => {
+		(structuredGedcomIndividual, fmpPersonId, expectedFmpPerson) => {
 			it('builds an FMP person', () => {
 				const actualFmpPerson =buildFmpPerson(
-					structuredGedcomIndividual
+					structuredGedcomIndividual, fmpPersonId
 				);
 
 				expect(actualFmpPerson).toStrictEqual(expectedFmpPerson);
