@@ -19,12 +19,12 @@ const buildFmpTree = gedcomLines => {
 
 	const structuredGedcom = structureGedcom(gedcomLines);
 
-	const structuredGedcomIndividuals =
-		structuredGedcom.hasOwnProperty(gedcomIndividualTag)
-			? structuredGedcom[gedcomIndividualTag]
-			: [];
+	const gedcomIndividuals =
+	structuredGedcom.hasOwnProperty(gedcomIndividualTag)
+		? structuredGedcom[gedcomIndividualTag]
+		: [];
 
-	const fmpPersons = structuredGedcomIndividuals.map(gedcomIndividual => {
+	const fmpPersons = gedcomIndividuals.map(gedcomIndividual => {
 		const xrefId = getXrefId(gedcomIndividual.value);
 		const personId = personsIdGenerator.next().value;
 
@@ -35,25 +35,25 @@ const buildFmpTree = gedcomLines => {
 		return fmpPerson;
 	});
 
-	const structuredGedcomFamilies =
-		structuredGedcom.hasOwnProperty(gedcomFamilyTag)
-			? structuredGedcom[gedcomFamilyTag]
-			: [];
+	const gedcomFamilies =
+	structuredGedcom.hasOwnProperty(gedcomFamilyTag)
+		? structuredGedcom[gedcomFamilyTag]
+		: [];
 
 	let fmpChilds = [];
-	const fmpFamilys = structuredGedcomFamilies.map(gedcomFamily => {
+	const fmpFamilys = gedcomFamilies.map(gedcomFamily => {
 		const fmpFamilyId = familysIdGenerator.next().value;
 
-		const structuredGedcomChildren =
+		const gedcomChildren =
 			gedcomFamily.hasOwnProperty(gedcomChildTag)
 				? gedcomFamily[gedcomChildTag]
 				: [];
 
-		const fmpChildsForFamily = structuredGedcomChildren.map(
+		const fmpChildsForFamily = gedcomChildren.map(
 			gedcomChild => {
-				const childGedcomXrefId = getLineValue(gedcomChild.value);
+				const childgedcomXrefId = getLineValue(gedcomChild.value);
 				const childFmpId = gedcomIndividualXrefIdToFmpPersonId
-					.get(childGedcomXrefId);
+					.get(childgedcomXrefId);
 
 				return {
 					'FamilyId': fmpFamilyId,
@@ -100,15 +100,15 @@ const buildDateCreated = structuredGedcom => {
 	const gedcomDateTag = 'DATE';
 	const gedcomTimeTag = 'TIME';
 
-	const structuredGedcomDate = structuredGedcom
+	const gedcomDate = structuredGedcom
 		[gedcomChangeTag][0]
 		[gedcomDateTag][0];
 
-	const gedcomDateTimeValues = [getLineValue(structuredGedcomDate.value), ];
+	const gedcomDateTimeValues = [getLineValue(gedcomDate.value), ];
 
-	if (structuredGedcomDate.hasOwnProperty(gedcomTimeTag)) {
-		const structuredGedcomTime = structuredGedcomDate[gedcomTimeTag][0];
-		gedcomDateTimeValues.push(getLineValue(structuredGedcomTime.value));
+	if (gedcomDate.hasOwnProperty(gedcomTimeTag)) {
+		const gedcomTime = gedcomDate[gedcomTimeTag][0];
+		gedcomDateTimeValues.push(getLineValue(gedcomTime.value));
 	}
 
 	const combinedDateTimeValue = gedcomDateTimeValues.join(' ');

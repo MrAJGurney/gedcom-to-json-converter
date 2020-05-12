@@ -2,25 +2,25 @@
 
 const { getLineValue, } = require('./get-gedcom-components');
 
-const buildFmpPerson = (structuredGedcomIndividual, personId)=> {
+const buildFmpPerson = (gedcomIndividual, personId)=> {
 	const fmpPerson = {
 		'Id': personId,
-		'IsLiving': buildIsLiving(structuredGedcomIndividual),
-		'Gender': buildGender(structuredGedcomIndividual),
-		'DateCreated': buildDateCreated(structuredGedcomIndividual),
-		'Names': buildNames(structuredGedcomIndividual),
-		'Facts': buildFacts(structuredGedcomIndividual),
+		'IsLiving': buildIsLiving(gedcomIndividual),
+		'Gender': buildGender(gedcomIndividual),
+		'DateCreated': buildDateCreated(gedcomIndividual),
+		'Names': buildNames(gedcomIndividual),
+		'Facts': buildFacts(gedcomIndividual),
 	};
 
 	return fmpPerson;
 };
 
-const buildIsLiving = structuredGedcomIndividual => {
+const buildIsLiving = gedcomIndividual => {
 	const gedcomDeathTag = 'DEAT';
-	return !structuredGedcomIndividual.hasOwnProperty(gedcomDeathTag);
+	return !gedcomIndividual.hasOwnProperty(gedcomDeathTag);
 };
 
-const buildGender = structuredGedcomIndividual => {
+const buildGender = gedcomIndividual => {
 	const gedcomSexTag = 'SEX';
 	const gedcomSexValues = {
 		male: 'M',
@@ -34,13 +34,13 @@ const buildGender = structuredGedcomIndividual => {
 		unknown: 0,
 	};
 
-	if (!structuredGedcomIndividual.hasOwnProperty(gedcomSexTag)) {
+	if (!gedcomIndividual.hasOwnProperty(gedcomSexTag)) {
 		return fmpSexValues.unknown;
 	}
 
-	const structuredGedcomSex = structuredGedcomIndividual[gedcomSexTag][0];
+	const gedcomSex = gedcomIndividual[gedcomSexTag][0];
 
-	switch (getLineValue(structuredGedcomSex.value)) {
+	switch (getLineValue(gedcomSex.value)) {
 	case gedcomSexValues.male:
 		return fmpSexValues.male;
 	case gedcomSexValues.female:
@@ -50,20 +50,20 @@ const buildGender = structuredGedcomIndividual => {
 	}
 };
 
-const buildDateCreated = structuredGedcomIndividual => {
+const buildDateCreated = gedcomIndividual => {
 	const gedcomChangeTag = 'CHAN';
 	const gedcomDateTag = 'DATE';
 	const gedcomTimeTag = 'TIME';
 
-	const structuredGedcomDate = structuredGedcomIndividual
+	const gedcomDate = gedcomIndividual
 		[gedcomChangeTag][0]
 		[gedcomDateTag][0];
 
-	const gedcomDateTimeValues = [getLineValue(structuredGedcomDate.value), ];
+	const gedcomDateTimeValues = [getLineValue(gedcomDate.value), ];
 
-	if (structuredGedcomDate.hasOwnProperty(gedcomTimeTag)) {
-		const structuredGedcomTime = structuredGedcomDate[gedcomTimeTag][0];
-		gedcomDateTimeValues.push(getLineValue(structuredGedcomTime.value));
+	if (gedcomDate.hasOwnProperty(gedcomTimeTag)) {
+		const gedcomTime = gedcomDate[gedcomTimeTag][0];
+		gedcomDateTimeValues.push(getLineValue(gedcomTime.value));
 	}
 
 	const combinedDateTimeValue = gedcomDateTimeValues.join(' ');
@@ -83,15 +83,15 @@ const buildDateCreated = structuredGedcomIndividual => {
 	return fmpDate;
 };
 
-const buildNames = structuredGedcomIndividual => {
+const buildNames = gedcomIndividual => {
 	const gedcomNameTag = 'NAME';
 	const gedcomGivenNameTag = 'GIVN';
 	const gedcomSurnameTag = 'SURN';
 
-	const structuredGedcomName = structuredGedcomIndividual[gedcomNameTag][0];
+	const gedcomName = gedcomIndividual[gedcomNameTag][0];
 
-	const gedcomGivenName = structuredGedcomName[gedcomGivenNameTag][0];
-	const gedcomSurname = structuredGedcomName[gedcomSurnameTag][0];
+	const gedcomGivenName = gedcomName[gedcomGivenNameTag][0];
+	const gedcomSurname = gedcomName[gedcomSurnameTag][0];
 
 	return [{
 		'FactTypeId': 100,
@@ -100,35 +100,35 @@ const buildNames = structuredGedcomIndividual => {
 	}, ];
 };
 
-const buildFacts = structuredGedcomIndividual => {
+const buildFacts = gedcomIndividual => {
 	const gedcomBirthTag = 'BIRT';
 	const gedcomDateTag = 'DATE';
 	const gedcomPlaceTag = 'PLAC';
 
-	if (!structuredGedcomIndividual.hasOwnProperty(gedcomBirthTag)) {
+	if (!gedcomIndividual.hasOwnProperty(gedcomBirthTag)) {
 		return [];
 	}
-	const structuredGedcomBirth = structuredGedcomIndividual[gedcomBirthTag][0];
+	const gedcomBirth = gedcomIndividual[gedcomBirthTag][0];
 
 	const birthFact = {
 		'FactTypeId': 405,
 		'Preferred': true,
 	};
 
-	if (structuredGedcomBirth.hasOwnProperty(gedcomDateTag)) {
-		const gedcomDate = structuredGedcomBirth[gedcomDateTag][0];
+	if (gedcomBirth.hasOwnProperty(gedcomDateTag)) {
+		const gedcomDate = gedcomBirth[gedcomDateTag][0];
 		birthFact['DateDetail'] = getLineValue(gedcomDate.value);
 	}
 
-	if (structuredGedcomBirth.hasOwnProperty(gedcomPlaceTag)) {
-		const gedcomPlace = structuredGedcomBirth[gedcomPlaceTag][0];
+	if (gedcomBirth.hasOwnProperty(gedcomPlaceTag)) {
+		const gedcomPlace = gedcomBirth[gedcomPlaceTag][0];
 		birthFact['Place'] = {
 			'PlaceName': getLineValue(gedcomPlace.value),
 		};
 	}
 
-	return structuredGedcomBirth.hasOwnProperty(gedcomDateTag)
-		|| structuredGedcomBirth.hasOwnProperty(gedcomPlaceTag)
+	return gedcomBirth.hasOwnProperty(gedcomDateTag)
+		|| gedcomBirth.hasOwnProperty(gedcomPlaceTag)
 		? [birthFact, ]
 		: [];
 };

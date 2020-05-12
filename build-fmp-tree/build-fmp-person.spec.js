@@ -208,11 +208,11 @@ describe('buildFmpPerson', () => {
 	];
 
 	describe.each(gedcomIndividuals)(
-		'when given a structured gedcom individual',
-		(structuredGedcomIndividual, fmpPersonId, expectedFmpPerson) => {
+		'when given a gedcom individual',
+		(gedcomIndividual, fmpPersonId, expectedFmpPerson) => {
 			it('builds an FMP person', () => {
 				const actualFmpPerson =buildFmpPerson(
-					structuredGedcomIndividual, fmpPersonId
+					gedcomIndividual, fmpPersonId
 				);
 
 				expect(actualFmpPerson).toStrictEqual(expectedFmpPerson);
