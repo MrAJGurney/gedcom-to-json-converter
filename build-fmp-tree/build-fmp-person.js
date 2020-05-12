@@ -105,15 +105,16 @@ const buildFacts = gedcomIndividual => {
 	const gedcomDateTag = 'DATE';
 	const gedcomPlaceTag = 'PLAC';
 
-	if (!gedcomIndividual.hasOwnProperty(gedcomBirthTag)) {
-		return [];
-	}
-	const gedcomBirth = gedcomIndividual[gedcomBirthTag][0];
-
 	const birthFact = {
 		'FactTypeId': 405,
 		'Preferred': true,
 	};
+
+	if (!gedcomIndividual.hasOwnProperty(gedcomBirthTag)) {
+		return [birthFact, ];
+	}
+
+	const gedcomBirth = gedcomIndividual[gedcomBirthTag][0];
 
 	if (gedcomBirth.hasOwnProperty(gedcomDateTag)) {
 		const gedcomDate = gedcomBirth[gedcomDateTag][0];
@@ -127,10 +128,7 @@ const buildFacts = gedcomIndividual => {
 		};
 	}
 
-	return gedcomBirth.hasOwnProperty(gedcomDateTag)
-		|| gedcomBirth.hasOwnProperty(gedcomPlaceTag)
-		? [birthFact, ]
-		: [];
+	return [birthFact, ];
 };
 
 module.exports =  {

@@ -339,7 +339,12 @@ describe('buildFmpTree', () => {
 								  'Surnames': 'Smith',
 							},
 						  ],
-						  'Facts': [],
+						  'Facts': [
+							  {
+								'FactTypeId': 405,
+								'Preferred': true,
+							},
+						],
 					},
 				  {
 						'IsLiving': true,
@@ -352,7 +357,12 @@ describe('buildFmpTree', () => {
 								'Surnames': 'Henderson',
 					  },
 						],
-						'Facts': [],
+						'Facts': [
+							{
+								'FactTypeId': 405,
+								'Preferred': true,
+							},
+						],
 				  },
 				  {
 						'Gender': 1,

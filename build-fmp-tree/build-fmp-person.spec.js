@@ -143,7 +143,7 @@ describe('buildFmpPerson', () => {
 				  {
 						'FactTypeId': 405,
 						'Place': {
-					  'PlaceName': 'Dundee',
+					 		'PlaceName': 'Dundee',
 						},
 						'Preferred': true,
 				  },
@@ -202,7 +202,12 @@ describe('buildFmpPerson', () => {
 						'Surnames': 'Henderson',
 				  },
 				],
-				'Facts': [],
+				'Facts': [
+					{
+						'FactTypeId': 405,
+						'Preferred': true,
+					},
+				],
 			  },
 		],
 	];
