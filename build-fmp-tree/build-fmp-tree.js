@@ -6,6 +6,7 @@ const {
 	getXrefId,
 	getLineValue,
 } = require('./get-gedcom-components');
+const { buildFmpDateCreated, } = require('./build-fmp-date-created');
 
 const buildFmpTree = gedcomLines => {
 	const gedcomIndividualTag = 'INDI';
@@ -68,7 +69,7 @@ const buildFmpTree = gedcomLines => {
 
 		return {
 			'Id': fmpFamilyId,
-			'DateCreated': buildDateCreated(gedcomFamily),
+			'DateCreated': buildFmpDateCreated(gedcomFamily),
 			'MotherId': gedcomIndividualXrefIdToFmpPersonId
 				.get(getLineValue(gedcomFamily['WIFE'][0].value)),
 			'FatherId': gedcomIndividualXrefIdToFmpPersonId
@@ -94,39 +95,6 @@ function* idGenerator(initialValue, increment) {
 		value += increment;
 	}
 }
-
-const buildDateCreated = structuredGedcom => {
-	const gedcomChangeTag = 'CHAN';
-	const gedcomDateTag = 'DATE';
-	const gedcomTimeTag = 'TIME';
-
-	const gedcomDate = structuredGedcom
-		[gedcomChangeTag][0]
-		[gedcomDateTag][0];
-
-	const gedcomDateTimeValues = [getLineValue(gedcomDate.value), ];
-
-	if (gedcomDate.hasOwnProperty(gedcomTimeTag)) {
-		const gedcomTime = gedcomDate[gedcomTimeTag][0];
-		gedcomDateTimeValues.push(getLineValue(gedcomTime.value));
-	}
-
-	const combinedDateTimeValue = gedcomDateTimeValues.join(' ');
-
-	const epoch = Date.parse(combinedDateTimeValue);
-	const millisecondsInMinute = 60 * 1000;
-	const timezoneOffset = (
-		new Date(combinedDateTimeValue)
-	).getTimezoneOffset();
-
-	const fmpDateWithTail = new Date(
-		epoch - (timezoneOffset * millisecondsInMinute)
-	);
-
-	const fmpDate = fmpDateWithTail.toISOString().split('.')[0];
-
-	return fmpDate;
-};
 
 module.exports = {
 	buildFmpTree,

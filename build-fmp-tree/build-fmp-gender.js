@@ -1,0 +1,38 @@
+'use strict';
+
+const { getLineValue, } = require('./get-gedcom-components');
+
+const gedcomSexTag = 'SEX';
+
+const gedcomSexValues = {
+	male: 'M',
+	female: 'F',
+	undetermined: 'U',
+};
+
+const fmpSexValues = {
+	male: 1,
+	female: 2,
+	unknown: 0,
+};
+
+const buildFmpGender = structuredGedcom => {
+	if (!structuredGedcom.hasOwnProperty(gedcomSexTag)) {
+		return fmpSexValues.unknown;
+	}
+
+	const gedcomSex = structuredGedcom[gedcomSexTag][0];
+
+	switch (getLineValue(gedcomSex.value)) {
+	case gedcomSexValues.male:
+		return fmpSexValues.male;
+	case gedcomSexValues.female:
+		return fmpSexValues.female;
+	case gedcomSexValues.undetermined:
+		return fmpSexValues.unknown;
+	}
+};
+
+module.exports =  {
+	buildFmpGender,
+};
