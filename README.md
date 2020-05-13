@@ -18,6 +18,8 @@ node index.js <PATH_TO_GEDCOM_INPUT_FILE> <PATH_TO_FMP_TREE_OUTPUT_FILE>
 
 ## Code Coverage
 
+Note that `index.js` has no unit tests, as it's behaviour is covered by the scripts testing the output of the gedcom parser.
+
 ```bash
 npm test -- --coverage
 ```
