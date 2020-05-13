@@ -1,5 +1,5 @@
 <!-- omit in toc -->
-# GEDCOM Parser
+# GEDCOM Parser README
 
 Navigate to `coding-challenge/challenge-2/andrew` before running scripts or tests.
 
