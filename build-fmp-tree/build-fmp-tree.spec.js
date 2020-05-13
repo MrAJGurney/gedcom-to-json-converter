@@ -5,6 +5,18 @@ const { buildFmpTree, } = require('./build-fmp-tree');
 describe('buildFmpTree', () => {
 	const gedcoms = [
 		[
+			[],
+			{
+				'Persons': [],
+				'Familys': [],
+				'Childs': [],
+				'SourceRepos': [],
+				'MasterSources': [],
+				'Medias': [],
+				'FactTypes': [],
+			},
+		],
+		[
 			[
 				'0 HEAD',
 				'1 SOUR FINDMYPAST',
@@ -47,28 +59,28 @@ describe('buildFmpTree', () => {
 			],
 			{
 				'Persons': [
-				  {
+					{
 						'IsLiving': true,
 						'Gender': 1,
 						'DateCreated': '2020-04-15T16:19:21',
 						'Names': [
-					  {
+							{
 								'FactTypeId': 100,
 								'GivenNames': 'Gavin',
 								'Surnames': 'Henderson',
-					  },
+							},
 						],
 						'Facts': [
-					  {
+							{
 								'FactTypeId': 405,
 								'DateDetail': '1 Jan 1990',
 								'Place': {
-						  'PlaceName': 'Dundee',
+									'PlaceName': 'Dundee',
 								},
 								'Preferred': true,
-					  },
+							},
 						],
-				  },
+					},
 				],
 				'Familys': [],
 				'Childs': [],
@@ -76,7 +88,7 @@ describe('buildFmpTree', () => {
 				'MasterSources': [],
 				'Medias': [],
 				'FactTypes': [],
-			  },
+			},
 		],
 		[
 			[
@@ -154,72 +166,72 @@ describe('buildFmpTree', () => {
 			{
 				'Persons': [
 					{
-						  'IsLiving': true,
-						  'Gender': 1,
-						  'DateCreated': '2020-04-15T16:38:50',
-						  'Names': [
+						'IsLiving': true,
+						'Gender': 1,
+						'DateCreated': '2020-04-15T16:38:50',
+						'Names': [
 							{
-								  'FactTypeId': 100,
-								  'GivenNames': 'Gavin',
-								  'Surnames': 'Henderson',
+								'FactTypeId': 100,
+								'GivenNames': 'Gavin',
+								'Surnames': 'Henderson',
 							},
-						  ],
-						  'Facts': [
+						],
+						'Facts': [
 							{
-								  'FactTypeId': 405,
-								  'DateDetail': '1 Jan 1990',
-								  'Preferred': true,
+								'FactTypeId': 405,
+								'DateDetail': '1 Jan 1990',
+								'Preferred': true,
 							},
-						  ],
+						],
 					},
 					{
-						  'Gender': 2,
-						  'DateCreated': '2020-04-15T16:39:15',
-						  'Names': [
+						'Gender': 2,
+						'DateCreated': '2020-04-15T16:39:15',
+						'Names': [
 							{
-								  'FactTypeId': 100,
-								  'GivenNames': 'Jane',
-								  'Surnames': 'Reed',
+								'FactTypeId': 100,
+								'GivenNames': 'Jane',
+								'Surnames': 'Reed',
 							},
-						  ],
-						  'Facts': [
+						],
+						'Facts': [
 							{
-								  'FactTypeId': 405,
-								  'Place': {
+								'FactTypeId': 405,
+								'Place': {
 									'PlaceName': 'Dundee',
-								  },
-								  'Preferred': true,
+								},
+								'Preferred': true,
 							},
-						  ],
+						],
 					},
-				  {
+					{
 						'Gender': 1,
 						'DateCreated': '2020-04-15T16:41:07',
 						'Names': [
-					  {
+							{
 								'FactTypeId': 100,
 								'GivenNames': 'Frank',
 								'Surnames': 'Henderson',
-					  },
+							},
 						],
-				  },
+					},
 				],
 				'Familys': [
-				  {
+					{
 						'DateCreated': '2020-04-15T16:40:57',
-				  },
+					},
 				],
 				'Childs': [
-				  {
+					{
 						'RelationshipToFather': 1,
 						'RelationshipToMother': 1,
-				  },
+					},
 				],
 				'SourceRepos': [],
 				'MasterSources': [],
 				'Medias': [],
 				'FactTypes': [],
-			  },
+			},
 		],
 		[
 			[
@@ -310,52 +322,34 @@ describe('buildFmpTree', () => {
 			{
 				'Persons': [
 					{
-						  'IsLiving': true,
-						  'Gender': 1,
-						  'DateCreated': '2020-04-15T16:42:39',
-						  'Names': [
+						'IsLiving': true,
+						'Gender': 1,
+						'DateCreated': '2020-04-15T16:42:39',
+						'Names': [
 							{
-								  'FactTypeId': 100,
-								  'GivenNames': 'Gavin',
-								  'Surnames': 'Henderson',
+								'FactTypeId': 100,
+								'GivenNames': 'Gavin',
+								'Surnames': 'Henderson',
 							},
-						  ],
-						  'Facts': [
+						],
+						'Facts': [
 							{
-								  'FactTypeId': 405,
-								  'DateDetail': '1 Jan 1990',
-								  'Preferred': true,
-							},
-						  ],
-					},
-					{
-						  'IsLiving': true,
-						  'Gender': 2,
-						  'DateCreated': '2020-04-15T16:43:06',
-						  'Names': [
-							{
-								  'FactTypeId': 100,
-								  'GivenNames': 'Jane',
-								  'Surnames': 'Smith',
-							},
-						  ],
-						  'Facts': [
-							  {
 								'FactTypeId': 405,
+								'DateDetail': '1 Jan 1990',
 								'Preferred': true,
 							},
 						],
 					},
-				  {
+					{
 						'IsLiving': true,
-						'Gender': 1,
-						'DateCreated': '2020-04-15T16:43:01',
+						'Gender': 2,
+						'DateCreated': '2020-04-15T16:43:06',
 						'Names': [
-					  {
+							{
 								'FactTypeId': 100,
-								'GivenNames': 'Frank',
-								'Surnames': 'Henderson',
-					  },
+								'GivenNames': 'Jane',
+								'Surnames': 'Smith',
+							},
 						],
 						'Facts': [
 							{
@@ -363,39 +357,57 @@ describe('buildFmpTree', () => {
 								'Preferred': true,
 							},
 						],
-				  },
-				  {
+					},
+					{
+						'IsLiving': true,
+						'Gender': 1,
+						'DateCreated': '2020-04-15T16:43:01',
+						'Names': [
+							{
+								'FactTypeId': 100,
+								'GivenNames': 'Frank',
+								'Surnames': 'Henderson',
+							},
+						],
+						'Facts': [
+							{
+								'FactTypeId': 405,
+								'Preferred': true,
+							},
+						],
+					},
+					{
 						'Gender': 1,
 						'DateCreated': '2020-04-15T16:44:00',
 						'Names': [
-					  {
+							{
 								'FactTypeId': 100,
 								'GivenNames': 'Rachel',
 								'Surnames': 'Henderson',
-					  },
+							},
 						],
-				  },
+					},
 				],
 				'Familys': [
-				  {
+					{
 						'DateCreated': '2020-04-15T16:43:01',
-				  },
+					},
 				],
 				'Childs': [
-				  {
+					{
 						'RelationshipToFather': 1,
 						'RelationshipToMother': 1,
-				  },
-				  {
+					},
+					{
 						'RelationshipToFather': 1,
 						'RelationshipToMother': 1,
-				  },
+					},
 				],
 				'SourceRepos': [],
 				'MasterSources': [],
 				'Medias': [],
 				'FactTypes': [],
-			  },
+			},
 		],
 	];
 
@@ -419,8 +431,11 @@ describe('buildFmpTree', () => {
 				expect(actualIds.length).toStrictEqual(uniqueIdsCount);
 			});
 
-			it.each(actualIds)('id is a numbers', actualId => {
-				expect(typeof actualId).toStrictEqual('number');
+			it('all ids are numbers', () => {
+				const nonNumberIds = actualIds.filter(
+					id => typeof id !== 'number'
+				);
+				expect(nonNumberIds).toHaveLength(0);
 			});
 		}
 	);

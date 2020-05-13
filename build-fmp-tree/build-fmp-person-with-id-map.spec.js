@@ -1,10 +1,10 @@
 'use strict';
 
 const {
-	buildFmpPerson,
-} = require('./build-fmp-person');
+	buildFmpPersonWithIdMap,
+} = require('./build-fmp-person-with-id-map');
 
-describe('buildFmpPerson', () => {
+describe('buildFmpPersonWithIdMap', () => {
 	const gedcomIndividuals = [
 		[
 			{
@@ -216,7 +216,7 @@ describe('buildFmpPerson', () => {
 		'when given a gedcom individual',
 		(gedcomIndividual, fmpPersonId, expectedFmpPerson) => {
 			it('builds an FMP person', () => {
-				const actualFmpPerson =buildFmpPerson(
+				const actualFmpPerson =buildFmpPersonWithIdMap(
 					gedcomIndividual, fmpPersonId
 				);
 
