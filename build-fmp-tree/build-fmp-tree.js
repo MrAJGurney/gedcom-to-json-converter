@@ -3,7 +3,6 @@
 const { structureGedcom, } = require('./structure-gedcom');
 const { buildFmpPersonWithIdMap, } = require('./build-fmp-person-with-id-map');
 const { buildFmpFamilyWithChilds, } = require('./build-fmp-family-with-childs');
-const { getXrefId, } = require('./get-gedcom-components');
 
 const gedcomIndividualTag = 'INDI';
 const gedcomFamilyTag = 'FAM';
@@ -42,7 +41,7 @@ const buildFmpPersonWithIdMaps = structuredGedcom => {
 
 	const gedcomIdToFmpId = new Map();
 	const fmpPersons = gedcomIndividuals.map(gedcomIndividual => {
-		const xrefId = getXrefId(gedcomIndividual.value);
+		const xrefId = gedcomIndividual.value.xrefId;
 		const personId = personsIdGenerator.next().value;
 
 		const fmpPerson = buildFmpPersonWithIdMap(gedcomIndividual, personId);

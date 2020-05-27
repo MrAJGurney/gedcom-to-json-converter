@@ -1,37 +1,48 @@
 'use strict';
 
 const {
-	getLevel,
-	getTag,
-} = require('./get-gedcom-components');
+	structureGedcomLine,
+} = require('./structure-gedcom-line');
 
-const structureGedcom = (gedcomLines, initialLineIndex = 0) => {
+const structureGedcom = gedcomLines => {
+	const structuredLines = gedcomLines.map(line => structureGedcomLine(line));
+
+	const structuredGedcom = recursivelyStructureSections(structuredLines);
+
+	return structuredGedcom;
+};
+
+const recursivelyStructureSections = (
+	structuredLines,
+	initialLineIndex = 0
+) => {
 	const structuredGedcom = {};
-	const initialLine = gedcomLines[initialLineIndex];
+
+	const initialLine = structuredLines[initialLineIndex];
 
 	for (
 		let lineIndex = initialLineIndex;
-		lineIndex < gedcomLines.length;
+		lineIndex < structuredLines.length;
 		lineIndex++
 	) {
-		const currentLine = gedcomLines[lineIndex];
+		const currentLine = structuredLines[lineIndex];
 
-		if (getLevel(currentLine) < getLevel(initialLine)) {
+		if (currentLine.level < initialLine.level) {
 			break;
 		}
 
-		if (getLevel(currentLine) > getLevel(initialLine)) {
+		if (currentLine.level > initialLine.level) {
 			continue;
 		}
 
-		const tag = getTag(currentLine);
+		const { tag, } = currentLine;
 		if (!structuredGedcom.hasOwnProperty(tag)) {
 			structuredGedcom[tag] = [];
 		}
 
 		const structuredSubsection =
-			lineHasChildLines(gedcomLines, lineIndex)
-				? structureGedcom(gedcomLines, lineIndex + 1)
+			lineHasChildLines(structuredLines, lineIndex)
+				? recursivelyStructureSections(structuredLines, lineIndex + 1)
 				: {};
 
 		structuredSubsection.value = currentLine;
@@ -42,15 +53,15 @@ const structureGedcom = (gedcomLines, initialLineIndex = 0) => {
 	return structuredGedcom;
 };
 
-const lineHasChildLines = (gedcomLines, lineIndex) => {
-	if (lineIndex === gedcomLines.length - 1) {
+const lineHasChildLines = (structuredLines, lineIndex) => {
+	if (lineIndex === structuredLines.length - 1) {
 		return false;
 	}
 
-	const currentLine = gedcomLines[lineIndex];
-	const nextLine = gedcomLines[lineIndex + 1];
+	const currentLine = structuredLines[lineIndex];
+	const nextLine = structuredLines[lineIndex + 1];
 
-	return getLevel(currentLine) < getLevel(nextLine);
+	return currentLine.level < nextLine.level;
 };
 
 module.exports = {

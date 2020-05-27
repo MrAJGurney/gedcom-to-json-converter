@@ -1,7 +1,5 @@
 'use strict';
 
-const { getLineValue, } = require('./get-gedcom-components');
-
 const gedcomNameTag = 'NAME';
 const gedcomGivenNameTag = 'GIVN';
 const gedcomSurnameTag = 'SURN';
@@ -14,8 +12,8 @@ const buildFmpNameFact = structuredGedcom => {
 
 	return {
 		'FactTypeId': 100,
-		'GivenNames': getLineValue(gedcomGivenName.value),
-		'Surnames': getLineValue(gedcomSurname.value),
+		'GivenNames': gedcomGivenName.value.lineValue,
+		'Surnames': gedcomSurname.value.lineValue,
 	};
 };
 

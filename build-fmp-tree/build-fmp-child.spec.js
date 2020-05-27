@@ -6,7 +6,12 @@ describe('buildFmpChild', () => {
 	const structuredGedcoms = [
 		[
 			{
-				'value': '1 CHIL @I1@',
+				'value': {
+					'level': 1,
+					'lineValue': '@I1@',
+					'tag': 'CHIL',
+					'xrefId': null,
+				},
 			},
 			new Map([
 				[
@@ -26,7 +31,12 @@ describe('buildFmpChild', () => {
 		],
 		[
 			{
-				'value': '1 CHIL @I2@',
+				'value': {
+					'level': 1,
+					'lineValue': '@I2@',
+					'tag': 'CHIL',
+					'xrefId': null,
+				},
 			},
 			new Map([
 				[

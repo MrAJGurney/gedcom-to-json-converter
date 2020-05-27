@@ -1,8 +1,8 @@
 'use strict';
 
-const { structureGedcom, } = require('./structure-gedcom');
+const {   structureGedcom, } = require('./structure-gedcom');
 
-describe('structureGedcom', () => {
+describe('  structureGedcom', () => {
 	describe('when given simple gedcom lines', () => {
 		it('structures the gedcom', () => {
 			const gedcomLines = [
@@ -11,14 +11,24 @@ describe('structureGedcom', () => {
 			];
 			const expectedStructuredGedcom = {
 				'HEAD': [{
-					'value': '0 HEAD',
+					'value': {
+						'level': 0,
+						'lineValue': null,
+						'tag': 'HEAD',
+						'xrefId': null,
+					},
 				}, ],
 				'INDI': [{
-					'value': '0 @I1@ INDI',
+					'value': {
+						'level': 0,
+						'lineValue': null,
+						'tag': 'INDI',
+						'xrefId': '@I1@',
+					},
 				}, ],
 			};
 
-			const actualStructuredGedcom = structureGedcom(gedcomLines);
+			const actualStructuredGedcom =   structureGedcom(gedcomLines);
 
 			expect(actualStructuredGedcom)
 				.toStrictEqual(expectedStructuredGedcom);
@@ -34,17 +44,32 @@ describe('structureGedcom', () => {
 			];
 			const expectedStructuredGedcom = {
 				'HEAD': [{
-					'value': '0 HEAD',
+					'value': {
+						'level': 0,
+						'lineValue': null,
+						'tag': 'HEAD',
+						'xrefId': null,
+					},
 				}, ],
 				'INDI': [{
-					'value': '0 @I1@ INDI',
+					'value': {
+						'level': 0,
+						'lineValue': null,
+						'tag': 'INDI',
+						'xrefId': '@I1@',
+					},
 				}, {
-					'value': '0 @I2@ INDI',
+					'value': {
+						'level': 0,
+						'lineValue': null,
+						'tag': 'INDI',
+						'xrefId': '@I2@',
+					},
 				}, ],
 
 			};
 
-			const actualStructuredGedcom = structureGedcom(gedcomLines);
+			const actualStructuredGedcom =   structureGedcom(gedcomLines);
 
 			expect(actualStructuredGedcom)
 				.toStrictEqual(expectedStructuredGedcom);
@@ -60,17 +85,34 @@ describe('structureGedcom', () => {
 			];
 			const expectedStructuredGedcom = {
 				'HEAD': [{
-					'value': '0 HEAD',
+					'value': {
+						'level': 0,
+						'lineValue': null,
+						'tag': 'HEAD',
+						'xrefId': null,
+					},
 				}, ],
 				'INDI': [{
-					'value': '0 @I2@ INDI',
+					'value': {
+						'level': 0,
+						'lineValue': null,
+						'tag': 'INDI',
+						'xrefId': '@I2@',
+
+					},
 					'NAME': [{
-						'value': '1 NAME Jane /Doe/',
+						'value': {
+							'level': 1,
+							'lineValue': 'Jane /Doe/',
+							'tag': 'NAME',
+
+							'xrefId': null,
+						},
 					}, ],
 				}, ],
 			};
 
-			const actualStructuredGedcom = structureGedcom(gedcomLines);
+			const actualStructuredGedcom =   structureGedcom(gedcomLines);
 
 			expect(actualStructuredGedcom)
 				.toMatchObject(expectedStructuredGedcom);
@@ -94,33 +136,84 @@ describe('structureGedcom', () => {
 				];
 				const expectedStructuredGedcom = {
 					'HEAD': [{
-						'value': '0 HEAD',
+						'value': {
+							'level': 0,
+							'lineValue': null,
+							'tag': 'HEAD',
+							'xrefId': null,
+						},
 					}, ],
 					'INDI': [{
-						'value': '0 @I1@ INDI',
+						'value': {
+							'level': 0,
+							'lineValue': null,
+							'tag': 'INDI',
+							'xrefId': '@I1@',
+
+						},
 					}, {
-						'value': '0 @I2@ INDI',
+						'value': {
+							'level': 0,
+							'lineValue': null,
+							'tag': 'INDI',
+							'xrefId': '@I2@',
+						},
+
 						'NAME': [{
-							'value': '1 NAME Jane /Doe/',
+							'value': {
+								'level': 1,
+								'lineValue': 'Jane /Doe/',
+								'tag': 'NAME',
+
+								'xrefId': null,
+							},
 							'GIVN': [{
-								'value': '2 GIVN Jane',
+								'value': {
+									'level': 2,
+									'lineValue': 'Jane',
+									'tag': 'GIVN',
+
+									'xrefId': null,
+								},
 							}, ],
 						}, ],
 					}, {
-						'value': '0 @I3@ INDI',
+						'value': {
+							'level': 0,
+							'lineValue': null,
+							'tag': 'INDI',
+							'xrefId': '@I3@',
+						},
 						'NAME': [{
-							'value': '1 NAME John /Smith/',
+							'value': {
+								'level': 1,
+								'lineValue': 'John /Smith/',
+								'tag': 'NAME',
+								'xrefId': null,
+							},
 							'GIVN': [{
-								'value': '2 GIVN John',
+								'value': {
+									'level': 2,
+									'lineValue': 'John',
+									'tag': 'GIVN',
+
+									'xrefId': null,
+								},
 							}, ],
 							'SURN': [{
-								'value': '2 SURN Smith',
+								'value': {
+									'level': 2,
+									'lineValue': 'Smith',
+									'tag': 'SURN',
+
+									'xrefId': null,
+								},
 							}, ],
 						}, ],
 					}, ],
 				};
 
-				const actualStructuredGedcom = structureGedcom(gedcomLines);
+				const actualStructuredGedcom =   structureGedcom(gedcomLines);
 
 				expect(actualStructuredGedcom)
 					.toMatchObject(expectedStructuredGedcom);

@@ -15,19 +15,44 @@ describe('buildFmpFamilyWithChilds', () => {
 		[
 			{
 				'HUSB': [{
-					'value': '1 HUSB @I1@',
+					'value': {
+						'level': 1,
+						'lineValue': '@I1@',
+						'tag': 'HUSB',
+						'xrefId': null,
+					},
 				}, ],
 				'WIFE': [{
-					'value': '1 WIFE @I2@',
+					'value': {
+						'level': 1,
+						'lineValue': '@I2@',
+						'tag': 'WIFE',
+						'xrefId': null,
+					},
 				}, ],
 				'CHAN': [{
 					'DATE': [{
 						'TIME': [{
-							'value': '3 TIME 16:43:01',
+							'value': {
+								'level': 3,
+								'lineValue': '16:43:01',
+								'tag': 'TIME',
+								'xrefId': null,
+							},
 						}, ],
-						'value': '2 DATE 15 APR 2020',
+						'value': {
+							'level': 2,
+							'lineValue': '15 APR 2020',
+							'tag': 'DATE',
+							'xrefId': null,
+						},
 					}, ],
-					'value': '1 CHAN',
+					'value': {
+						'level': 1,
+						'lineValue': null,
+						'tag': 'CHAN',
+						'xrefId': null,
+					},
 				}, ],
 			},
 			-1,
@@ -53,27 +78,62 @@ describe('buildFmpFamilyWithChilds', () => {
 		[
 			{
 				'HUSB': [{
-					'value': '1 HUSB @I3@',
+					'value': {
+						'level': 1,
+						'lineValue': '@I3@',
+						'tag': 'HUSB',
+						'xrefId': null,
+					},
 				}, ],
 				'WIFE': [{
-					'value': '1 WIFE @I2@',
+					'value': {
+						'level': 1,
+						'lineValue': '@I2@',
+						'tag': 'WIFE',
+						'xrefId': null,
+					},
 				}, ],
 				'CHIL': [
 					{
-						'value': '1 CHIL @I1@',
+						'value': {
+							'level': 1,
+							'lineValue': '@I1@',
+							'tag': 'CHIL',
+							'xrefId': null,
+						},
 					},
 					{
-						'value': '1 CHIL @I4@',
+						'value': {
+							'level': 1,
+							'lineValue': '@I4@',
+							'tag': 'CHIL',
+							'xrefId': null,
+						},
 					},
 				],
 				'CHAN': [{
 					'DATE': [{
 						'TIME': [{
-							'value': '3 TIME 16:43:01',
+							'value': {
+								'level': 3,
+								'lineValue': '16:43:01',
+								'tag': 'TIME',
+								'xrefId': null,
+							},
 						}, ],
-						'value': '2 DATE 15 APR 2020',
+						'value': {
+							'level': 2,
+							'lineValue': '15 APR 2020',
+							'tag': 'DATE',
+							'xrefId': null,
+						},
 					}, ],
-					'value': '1 CHAN',
+					'value': {
+						'level': 1,
+						'lineValue': null,
+						'tag': 'CHAN',
+						'xrefId': null,
+					},
 				}, ],
 			},
 			-1,

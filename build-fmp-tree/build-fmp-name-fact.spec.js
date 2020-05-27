@@ -8,12 +8,27 @@ describe('buildFmpBirthFact', () => {
 			{
 				'NAME': [{
 					'GIVN': [{
-						'value': '2 GIVN John',
+						'value': {
+							'level': 2,
+							'lineValue': 'John',
+							'tag': 'GIVN',
+							'xrefId': null,
+						},
 					}, ],
 					'SURN': [{
-						'value': '2 SURN Smith',
+						'value': {
+							'level': 2,
+							'lineValue': 'Smith',
+							'tag': 'SURN',
+							'xrefId': null,
+						},
 					}, ],
-					'value': '1 NAME John /Smith/',
+					'value': {
+						'level': 1,
+						'lineValue': 'John /Smith/',
+						'tag': 'NAME',
+						'xrefId': null,
+					},
 				}, ],
 			},
 			{
@@ -26,12 +41,27 @@ describe('buildFmpBirthFact', () => {
 			{
 				'NAME': [{
 					'GIVN': [{
-						'value': '2 GIVN Jane',
+						'value': {
+							'level': 2,
+							'lineValue': 'Jane',
+							'tag': 'GIVN',
+							'xrefId': null,
+						},
 					}, ],
 					'SURN': [{
-						'value': '2 SURN Doe',
+						'value': {
+							'level': 2,
+							'lineValue': 'Doe',
+							'tag': 'SURN',
+							'xrefId': null,
+						},
 					}, ],
-					'value': '1 NAME Jane /Doe/',
+					'value': {
+						'level': 2,
+						'lineValue': 'Jane /Doe/',
+						'tag': 'NAME',
+						'xrefId': null,
+					},
 				}, ],
 			},
 			{

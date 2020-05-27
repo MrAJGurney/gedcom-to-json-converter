@@ -1,5 +1,14 @@
 'use strict';
 
+const structureGedcomLine = line => {
+	return {
+		level: getLevel(line),
+		xrefId: getXrefId(line),
+		tag: getTag(line),
+		lineValue: getLineValue(line),
+	};
+};
+
 const getLevel = line => {
 	const lineComponents = line.split(' ');
 	const levelComponent = lineComponents[0];
@@ -37,8 +46,5 @@ const buildLineValue = (lineComponents, lineValueComponentStartIndex) => {
 };
 
 module.exports = {
-	getLevel,
-	getXrefId,
-	getTag,
-	getLineValue,
+	structureGedcomLine,
 };

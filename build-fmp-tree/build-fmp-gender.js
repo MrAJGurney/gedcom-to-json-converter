@@ -1,7 +1,5 @@
 'use strict';
 
-const { getLineValue, } = require('./get-gedcom-components');
-
 const gedcomSexTag = 'SEX';
 
 const gedcomSexValues = {
@@ -23,7 +21,7 @@ const buildFmpGender = structuredGedcom => {
 
 	const gedcomSex = structuredGedcom[gedcomSexTag][0];
 
-	switch (getLineValue(gedcomSex.value)) {
+	switch (gedcomSex.value.lineValue) {
 	case gedcomSexValues.male:
 		return fmpSexValues.male;
 	case gedcomSexValues.female:

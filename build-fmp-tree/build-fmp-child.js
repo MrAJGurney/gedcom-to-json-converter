@@ -1,7 +1,5 @@
 'use strict';
 
-const { getLineValue, } = require('./get-gedcom-components');
-
 const buildFmpChild = (
 	gedcomChild,
 	gedcomIdToFmpId,
@@ -9,7 +7,7 @@ const buildFmpChild = (
 	childId
 ) => {
 
-	const gedcomId = getLineValue(gedcomChild.value);
+	const gedcomId = gedcomChild.value.lineValue;
 	const personId = gedcomIdToFmpId.get(gedcomId);
 
 	const fmpChild = {

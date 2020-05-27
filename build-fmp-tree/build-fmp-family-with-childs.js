@@ -2,7 +2,6 @@
 
 const { buildFmpChild, } = require('./build-fmp-child');
 const { buildFmpDateCreated, } = require('./build-fmp-date-created');
-const { getLineValue, } = require('./get-gedcom-components');
 
 const gedcomChildTag = 'CHIL';
 
@@ -16,9 +15,9 @@ const buildFmpFamilyWithChilds = (
 		'Id': familyId,
 		'DateCreated': buildFmpDateCreated(gedcomFamily),
 		'MotherId': gedcomIdToFmpId
-			.get(getLineValue(gedcomFamily['WIFE'][0].value)),
+			.get(gedcomFamily['WIFE'][0].value.lineValue),
 		'FatherId': gedcomIdToFmpId
-			.get(getLineValue(gedcomFamily['HUSB'][0].value)),
+			.get(gedcomFamily['HUSB'][0].value.lineValue),
 	};
 
 	const gedcomChildren =

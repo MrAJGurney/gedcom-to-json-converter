@@ -14,7 +14,12 @@ describe('buildFmpBirthFact', () => {
 		[
 			{
 				'BIRT': [{
-					'value': '1 BIRT',
+					'value': {
+						'level': 1,
+						'lineValue': null,
+						'tag': 'BIRT',
+						'xrefId': null,
+					},
 				}, ],
 			},
 			{
@@ -26,9 +31,19 @@ describe('buildFmpBirthFact', () => {
 			{
 				'BIRT': [{
 					'PLAC': [{
-						'value': '2 PLAC Dundee',
+						'value': {
+							'level': 2,
+							'lineValue': 'Dundee',
+							'tag': 'PLAC',
+							'xrefId': null,
+						},
 					}, ],
-					'value': '1 BIRT',
+					'value': {
+						'level': 1,
+						'lineValue': null,
+						'tag': 'BIRT',
+						'xrefId': null,
+					},
 				}, ],
 			},
 			{
@@ -43,9 +58,19 @@ describe('buildFmpBirthFact', () => {
 			{
 				'BIRT': [{
 					'DATE': [{
-						'value': '2 DATE 1 Jan 1990',
+						'value': {
+							'level': 2,
+							'lineValue': '1 Jan 1990',
+							'tag': 'DATE',
+							'xrefId': null,
+						},
 					}, ],
-					'value': '1 BIRT',
+					'value': {
+						'level': 1,
+						'lineValue': null,
+						'tag': 'BIRT',
+						'xrefId': null,
+					},
 				}, ],
 			},
 			{
@@ -58,12 +83,27 @@ describe('buildFmpBirthFact', () => {
 			{
 				'BIRT': [{
 					'PLAC': [{
-						'value': '2 PLAC Dundee',
+						'value': {
+							'level': 2,
+							'lineValue': 'Dundee',
+							'tag': 'PLAC',
+							'xrefId': null,
+						},
 					}, ],
 					'DATE': [{
-						'value': '2 DATE 1 Jan 1990',
+						'value': {
+							'level': 2,
+							'lineValue': '1 Jan 1990',
+							'tag': 'DATE',
+							'xrefId': null,
+						},
 					}, ],
-					'value': '1 BIRT',
+					'value': {
+						'level': 1,
+						'lineValue': null,
+						'tag': 'BIRT',
+						'xrefId': null,
+					},
 				}, ],
 			},
 			{

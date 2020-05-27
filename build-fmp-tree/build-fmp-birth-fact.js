@@ -1,7 +1,5 @@
 'use strict';
 
-const { getLineValue, } = require('./get-gedcom-components');
-
 const gedcomBirthTag = 'BIRT';
 const gedcomDateTag = 'DATE';
 const gedcomPlaceTag = 'PLAC';
@@ -20,13 +18,13 @@ const buildFmpBirthFact = structuredGedcom => {
 
 	if (gedcomBirth.hasOwnProperty(gedcomDateTag)) {
 		const gedcomDate = gedcomBirth[gedcomDateTag][0];
-		birthFact['DateDetail'] = getLineValue(gedcomDate.value);
+		birthFact['DateDetail'] = gedcomDate.value.lineValue;
 	}
 
 	if (gedcomBirth.hasOwnProperty(gedcomPlaceTag)) {
 		const gedcomPlace = gedcomBirth[gedcomPlaceTag][0];
 		birthFact['Place'] = {
-			'PlaceName': getLineValue(gedcomPlace.value),
+			'PlaceName': gedcomPlace.value.lineValue,
 		};
 	}
 

@@ -11,7 +11,12 @@ describe('buildFmpBirthFact', () => {
 		[
 			{
 				'DEAT': [{
-					'value': '2 DATE 1960',
+					'value': {
+						'level': 2,
+						'lineValue': '1960',
+						'tag': 'DATE',
+						'xrefId': null,
+					},
 				}, ],
 			},
 			false,
