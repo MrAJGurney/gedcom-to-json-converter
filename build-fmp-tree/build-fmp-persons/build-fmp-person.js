@@ -2,11 +2,11 @@
 
 const { buildFmpIsLiving, } = require('./build-fmp-is-living');
 const { buildFmpGender, } = require('./build-fmp-gender');
-const { buildFmpDateCreated, } = require('./build-fmp-date-created');
+const { buildFmpDateCreated, } = require('../build-fmp-date-created');
 const { buildFmpNameFact, } = require('./build-fmp-name-fact');
 const { buildFmpBirthFact, } = require('./build-fmp-birth-fact');
 
-const buildFmpPersonWithIdMap = (gedcomIndividual, personId)=> {
+const buildFmpPerson = (gedcomIndividual, personId)=> {
 	const fmpPerson = {
 		'Id': personId,
 		'IsLiving': buildFmpIsLiving(gedcomIndividual),
@@ -32,5 +32,5 @@ const buildFacts = gedcomIndividual => {
 };
 
 module.exports =  {
-	buildFmpPersonWithIdMap,
+	buildFmpPerson,
 };

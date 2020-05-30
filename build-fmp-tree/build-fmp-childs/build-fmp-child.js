@@ -2,13 +2,12 @@
 
 const buildFmpChild = (
 	gedcomChild,
-	gedcomIdToFmpId,
+	personsIds,
 	familyId,
 	childId
 ) => {
-
 	const gedcomId = gedcomChild.value.lineValue;
-	const personId = gedcomIdToFmpId.get(gedcomId);
+	const personId = personsIds[gedcomId];
 
 	const fmpChild = {
 		'FamilyId': familyId,

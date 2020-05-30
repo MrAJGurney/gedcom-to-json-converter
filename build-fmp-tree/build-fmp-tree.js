@@ -1,24 +1,44 @@
 'use strict';
 
-const { structureGedcom, } = require('./structure-gedcom');
-const { buildFmpPersonWithIdMap, } = require('./build-fmp-person-with-id-map');
-const { buildFmpFamilyWithChilds, } = require('./build-fmp-family-with-childs');
+const { structureGedcom, }
+	= require('./structure-gedcom/structure-gedcom');
 
-const gedcomIndividualTag = 'INDI';
-const gedcomFamilyTag = 'FAM';
+const { buildFmpPersonsIds, }
+	= require('./build-fmp-persons/build-fmp-persons-ids');
+const { buildFmpPersons, }
+	= require('./build-fmp-persons/build-fmp-persons');
+
+const { buildFmpFamilysIds, }
+	= require('./build-fmp-familys/build-fmp-familys-ids');
+const { buildFmpFamilys, }
+	= require('./build-fmp-familys/build-fmp-familys');
+
+const { buildFmpChilds, }
+	= require('./build-fmp-childs/build-fmp-childs');
 
 const buildFmpTree = gedcomLines => {
 	const structuredGedcom = structureGedcom(gedcomLines);
 
-	const [
-		fmpPersons,
-		gedcomIdToFmpId,
-	] = buildFmpPersonWithIdMaps(structuredGedcom);
+	const fmpPersonsIds = buildFmpPersonsIds(structuredGedcom);
 
-	const [
-		fmpFamilys,
-		fmpChilds,
-	] = buildFmpFamilysAndChilds(structuredGedcom, gedcomIdToFmpId);
+	const fmpFamilysIds = buildFmpFamilysIds(structuredGedcom);
+
+	const fmpPersons = buildFmpPersons(
+		structuredGedcom,
+		fmpPersonsIds
+	);
+
+	const fmpFamilys = buildFmpFamilys(
+		structuredGedcom,
+		fmpPersonsIds,
+		fmpFamilysIds
+	);
+
+	const fmpChilds = buildFmpChilds(
+		structuredGedcom,
+		fmpPersonsIds,
+		fmpFamilysIds
+	);
 
 	return {
 		'Persons': fmpPersons,
@@ -30,71 +50,6 @@ const buildFmpTree = gedcomLines => {
 		'FactTypes': [],
 	};
 };
-
-const buildFmpPersonWithIdMaps = structuredGedcom => {
-	const personsIdGenerator = idGenerator(1000000000, 1);
-
-	const gedcomIndividuals =
-	structuredGedcom.hasOwnProperty(gedcomIndividualTag)
-		? structuredGedcom[gedcomIndividualTag]
-		: [];
-
-	const gedcomIdToFmpId = new Map();
-	const fmpPersons = gedcomIndividuals.map(gedcomIndividual => {
-		const xrefId = gedcomIndividual.value.xrefId;
-		const personId = personsIdGenerator.next().value;
-
-		const fmpPerson = buildFmpPersonWithIdMap(gedcomIndividual, personId);
-
-		gedcomIdToFmpId.set(xrefId, personId);
-
-		return fmpPerson;
-	});
-
-	return [
-		fmpPersons,
-		gedcomIdToFmpId,
-	];
-};
-
-const buildFmpFamilysAndChilds = (structuredGedcom, gedcomIdToFmpId) => {
-	const familysIdGenerator = idGenerator(-1, -1);
-	const childsIdGenerator = idGenerator(-101, -1);
-
-	const gedcomFamilies =
-	structuredGedcom.hasOwnProperty(gedcomFamilyTag)
-		? structuredGedcom[gedcomFamilyTag]
-		: [];
-
-	let fmpChilds = [];
-	const fmpFamilys = gedcomFamilies.map(gedcomFamily => {
-		const familyId = familysIdGenerator.next().value;
-
-		const [ fmpFamily, fmpChildsForFamily, ] = buildFmpFamilyWithChilds(
-			gedcomFamily,
-			familyId,
-			gedcomIdToFmpId,
-			childsIdGenerator
-		);
-
-		fmpChilds = fmpChilds.concat(fmpChildsForFamily);
-
-		return fmpFamily;
-	});
-
-	return [
-		fmpFamilys,
-		fmpChilds,
-	];
-};
-
-function* idGenerator(initialValue, increment) {
-	let value = initialValue;
-	while (true) {
-		yield value;
-		value += increment;
-	}
-}
 
 module.exports = {
 	buildFmpTree,
