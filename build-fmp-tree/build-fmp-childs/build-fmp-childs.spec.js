@@ -123,12 +123,71 @@ describe('buildFmpChilds', () => {
 		],
 	};
 
+	const multipleFamiliesCase = {
+		gedcom: {
+			FAM: [
+				{
+					CHIL: [
+						{
+							value: {
+								lineValue: '@I1@',
+							},
+						},
+					],
+					value: {
+						xrefId: '@F1@',
+						tag: 'FAM',
+					},
+				},
+				{
+					CHIL: [
+						{
+							value: {
+								lineValue: '@I2@',
+							},
+						},
+					],
+					value: {
+						xrefId: '@F2@',
+						tag: 'FAM',
+					},
+				},
+			],
+		},
+		personsIds: {
+			'@I1@': 1000000,
+			'@I2@': 1000001,
+		},
+		familysIds: {
+			'@F1@': 1,
+			'@F2@': 2,
+		},
+		childIds: [-100, -200, ],
+		expectedChilds: [
+			{
+				FamilyId: 1,
+				RelationshipToFather: 1,
+				RelationshipToMother: 1,
+				ChildId: 1000000,
+				Id: -100,
+			},
+			{
+				FamilyId: 2,
+				RelationshipToFather: 1,
+				RelationshipToMother: 1,
+				ChildId: 1000001,
+				Id: -200,
+			},
+		],
+	};
+
 	describe('with parameters to build children', () => {
 		it.each([
 			noFamilyCase,
 			noChildrenCase,
 			singleChildCase,
 			multipleChildrenCase,
+			multipleFamiliesCase,
 		])(
 			'builds the expected children',
 			({
