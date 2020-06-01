@@ -6,21 +6,21 @@ const { buildFmpChild, } = require('./build-fmp-child');
 const GEDCOM_FAMILY_TAG = 'FAM';
 const GEDCOM_CHILD_TAG = 'CHIL';
 
-const buildFmpChilds = (structuredGedcom, fmpPersonsIds, fmpFamilysIds) => {
-	const gedcomChildrenWithFamilyIds
-		= getGedcomChildrenWithFamilyIds(structuredGedcom, fmpFamilysIds);
+const buildFmpChilds = (gedcom, personsIds, familysIds) => {
+	const gedcomChildrenAndFamilyId
+		= getGedcomChildrenAndFamilyId(gedcom, familysIds);
 
 	const initialValue = -1;
 	const increment = -1;
 	const childIdGenerator = buildFmpIdGenerator(initialValue, increment);
 
-	const fmpChilds = gedcomChildrenWithFamilyIds.map(childWithFamilyId => {
-		const { gedcomChild, familyId, } = childWithFamilyId;
+	const fmpChilds = gedcomChildrenAndFamilyId.map(childAndFamilyId => {
+		const { gedcomChild, familyId, } = childAndFamilyId;
 		const childId = childIdGenerator.next().value;
 
 		const fmpChild = buildFmpChild(
 			gedcomChild,
-			fmpPersonsIds,
+			personsIds,
 			familyId,
 			childId
 		);
@@ -30,24 +30,24 @@ const buildFmpChilds = (structuredGedcom, fmpPersonsIds, fmpFamilysIds) => {
 	return fmpChilds;
 };
 
-const getGedcomChildrenWithFamilyIds = (structuredGedcom, fmpFamilysIds) => {
-	if (!structuredGedcom.hasOwnProperty(GEDCOM_FAMILY_TAG)) {
+const getGedcomChildrenAndFamilyId = (gedcom, familysIds) => {
+	if (!gedcom.hasOwnProperty(GEDCOM_FAMILY_TAG)) {
 		return [];
 	}
 
-	const gedcomFamilys = structuredGedcom[GEDCOM_FAMILY_TAG];
+	const gedcomFamilys = gedcom[GEDCOM_FAMILY_TAG];
 
-	const gedcomChildrenWithIds = [];
+	const gedcomChildrenAndFamilyId = [];
 
 	gedcomFamilys.forEach(family => {
 		if (family.hasOwnProperty(GEDCOM_CHILD_TAG)) {
 			const { value: { xrefId, }, } = family;
-			const familyId = fmpFamilysIds[xrefId];
+			const familyId = familysIds[xrefId];
 
 			const gedcomChildren = family[GEDCOM_CHILD_TAG];
 
 			gedcomChildren.forEach(gedcomChild => {
-				gedcomChildrenWithIds.push({
+				gedcomChildrenAndFamilyId.push({
 					gedcomChild,
 					familyId,
 				});
@@ -55,7 +55,7 @@ const getGedcomChildrenWithFamilyIds = (structuredGedcom, fmpFamilysIds) => {
 		}
 	});
 
-	return gedcomChildrenWithIds;
+	return gedcomChildrenAndFamilyId;
 };
 
 module.exports = { buildFmpChilds, };

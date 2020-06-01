@@ -3,68 +3,41 @@
 const { buildFmpChild, } = require('./build-fmp-child');
 
 describe('buildFmpChild', () => {
-	const structuredGedcoms = [
-		[
-			{
-				value: {
-					level: 1,
-					lineValue: '@I1@',
-					tag: 'CHIL',
-					xrefId: null,
-				},
+	const simpleCase = {
+		gedcomChild: {
+			value: {
+				lineValue: '@I1@',
 			},
-			{
-				'@I1@': 1000000000,
-			},
-			-1,
-			-101,
-			{
-				FamilyId: -1,
-				RelationshipToFather: 1,
-				RelationshipToMother: 1,
-				ChildId: 1000000000,
-				Id: -101,
-			},
-		],
-		[
-			{
-				value: {
-					level: 1,
-					lineValue: '@I2@',
-					tag: 'CHIL',
-					xrefId: null,
-				},
-			},
-			{
-				'@I1@': 1000000000,
-				'@I2@': 1000000001,
+		},
+		personsIds: {
+			'@I1@': 1000000000,
+		},
+		familyId: -1,
+		childId: -101,
+		expectedChild: {
+			FamilyId: -1,
+			RelationshipToFather: 1,
+			RelationshipToMother: 1,
+			ChildId: 1000000000,
+			Id: -101,
+		},
+	};
 
-			},
-			-3,
-			-102,
-			{
-				FamilyId: -3,
-				RelationshipToFather: 1,
-				RelationshipToMother: 1,
-				ChildId: 1000000001,
-				Id: -102,
-			},
-		],
-	];
-
-	describe('when given structured gedcom', () => {
-		it.each(structuredGedcoms)(
-			'builds a child',
-			(
-				structuredGedcom,
-				gedcomIdToFmpId,
+	describe('with parameters to build a child', () => {
+		it.each([
+			simpleCase,
+		])(
+			'builds the expected child',
+			({
+				gedcomChild,
+				personsIds,
 				familyId,
 				childId,
-				expectedChild
-			) => {
+				expectedChild,
+			}) => {
 				const actualChild = buildFmpChild(
-					structuredGedcom,
-					gedcomIdToFmpId,
+					gedcomChild,
+					personsIds,
 					familyId,
 					childId
 				);
