@@ -6,11 +6,11 @@ describe('buildFmpChild', () => {
 	const structuredGedcoms = [
 		[
 			{
-				'value': {
-					'level': 1,
-					'lineValue': '@I1@',
-					'tag': 'CHIL',
-					'xrefId': null,
+				value: {
+					level: 1,
+					lineValue: '@I1@',
+					tag: 'CHIL',
+					xrefId: null,
 				},
 			},
 			{
@@ -19,20 +19,20 @@ describe('buildFmpChild', () => {
 			-1,
 			-101,
 			{
-				'FamilyId': -1,
-				'RelationshipToFather': 1,
-				'RelationshipToMother': 1,
-				'ChildId': 1000000000,
-				'Id': -101,
+				FamilyId: -1,
+				RelationshipToFather: 1,
+				RelationshipToMother: 1,
+				ChildId: 1000000000,
+				Id: -101,
 			},
 		],
 		[
 			{
-				'value': {
-					'level': 1,
-					'lineValue': '@I2@',
-					'tag': 'CHIL',
-					'xrefId': null,
+				value: {
+					level: 1,
+					lineValue: '@I2@',
+					tag: 'CHIL',
+					xrefId: null,
 				},
 			},
 			{
@@ -43,11 +43,11 @@ describe('buildFmpChild', () => {
 			-3,
 			-102,
 			{
-				'FamilyId': -3,
-				'RelationshipToFather': 1,
-				'RelationshipToMother': 1,
-				'ChildId': 1000000001,
-				'Id': -102,
+				FamilyId: -3,
+				RelationshipToFather: 1,
+				RelationshipToMother: 1,
+				ChildId: 1000000001,
+				Id: -102,
 			},
 		],
 	];

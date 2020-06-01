@@ -10,12 +10,12 @@ describe('buildFmpBirthFact', () => {
 		],
 		[
 			{
-				'DEAT': [{
-					'value': {
-						'level': 2,
-						'lineValue': '1960',
-						'tag': 'DATE',
-						'xrefId': null,
+				DEAT: [{
+					value: {
+						level: 2,
+						lineValue: '1960',
+						tag: 'DATE',
+						xrefId: null,
 					},
 				}, ],
 			},

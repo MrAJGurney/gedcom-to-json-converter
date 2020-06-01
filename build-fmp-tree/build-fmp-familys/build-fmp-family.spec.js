@@ -6,44 +6,44 @@ describe('buildFmpFamily', () => {
 	const structuredGedcoms = [
 		[
 			{
-				'HUSB': [{
-					'value': {
-						'level': 1,
-						'lineValue': '@I1@',
-						'tag': 'HUSB',
-						'xrefId': null,
+				HUSB: [{
+					value: {
+						level: 1,
+						lineValue: '@I1@',
+						tag: 'HUSB',
+						xrefId: null,
 					},
 				}, ],
-				'WIFE': [{
-					'value': {
-						'level': 1,
-						'lineValue': '@I2@',
-						'tag': 'WIFE',
-						'xrefId': null,
+				WIFE: [{
+					value: {
+						level: 1,
+						lineValue: '@I2@',
+						tag: 'WIFE',
+						xrefId: null,
 					},
 				}, ],
-				'CHAN': [{
-					'DATE': [{
-						'TIME': [{
-							'value': {
-								'level': 3,
-								'lineValue': '16:43:01',
-								'tag': 'TIME',
-								'xrefId': null,
+				CHAN: [{
+					DATE: [{
+						TIME: [{
+							value: {
+								level: 3,
+								lineValue: '16:43:01',
+								tag: 'TIME',
+								xrefId: null,
 							},
 						}, ],
-						'value': {
-							'level': 2,
-							'lineValue': '15 APR 2020',
-							'tag': 'DATE',
-							'xrefId': null,
+						value: {
+							level: 2,
+							lineValue: '15 APR 2020',
+							tag: 'DATE',
+							xrefId: null,
 						},
 					}, ],
-					'value': {
-						'level': 1,
-						'lineValue': null,
-						'tag': 'CHAN',
-						'xrefId': null,
+					value: {
+						level: 1,
+						lineValue: null,
+						tag: 'CHAN',
+						xrefId: null,
 					},
 				}, ],
 			},
@@ -53,70 +53,70 @@ describe('buildFmpFamily', () => {
 			},
 			-1,
 			{
-				'Id': -1,
-				'DateCreated': '2020-04-15T16:43:01',
-				'MotherId': 1000000001,
-				'FatherId': 1000000000,
+				Id: -1,
+				DateCreated: '2020-04-15T16:43:01',
+				MotherId: 1000000001,
+				FatherId: 1000000000,
 			},
 		],
 		[
 			{
-				'HUSB': [{
-					'value': {
-						'level': 1,
-						'lineValue': '@I3@',
-						'tag': 'HUSB',
-						'xrefId': null,
+				HUSB: [{
+					value: {
+						level: 1,
+						lineValue: '@I3@',
+						tag: 'HUSB',
+						xrefId: null,
 					},
 				}, ],
-				'WIFE': [{
-					'value': {
-						'level': 1,
-						'lineValue': '@I2@',
-						'tag': 'WIFE',
-						'xrefId': null,
+				WIFE: [{
+					value: {
+						level: 1,
+						lineValue: '@I2@',
+						tag: 'WIFE',
+						xrefId: null,
 					},
 				}, ],
-				'CHIL': [
+				CHIL: [
 					{
-						'value': {
-							'level': 1,
-							'lineValue': '@I1@',
-							'tag': 'CHIL',
-							'xrefId': null,
+						value: {
+							level: 1,
+							lineValue: '@I1@',
+							tag: 'CHIL',
+							xrefId: null,
 						},
 					},
 					{
-						'value': {
-							'level': 1,
-							'lineValue': '@I4@',
-							'tag': 'CHIL',
-							'xrefId': null,
+						value: {
+							level: 1,
+							lineValue: '@I4@',
+							tag: 'CHIL',
+							xrefId: null,
 						},
 					},
 				],
-				'CHAN': [{
-					'DATE': [{
-						'TIME': [{
-							'value': {
-								'level': 3,
-								'lineValue': '16:43:01',
-								'tag': 'TIME',
-								'xrefId': null,
+				CHAN: [{
+					DATE: [{
+						TIME: [{
+							value: {
+								level: 3,
+								lineValue: '16:43:01',
+								tag: 'TIME',
+								xrefId: null,
 							},
 						}, ],
-						'value': {
-							'level': 2,
-							'lineValue': '15 APR 2020',
-							'tag': 'DATE',
-							'xrefId': null,
+						value: {
+							level: 2,
+							lineValue: '15 APR 2020',
+							tag: 'DATE',
+							xrefId: null,
 						},
 					}, ],
-					'value': {
-						'level': 1,
-						'lineValue': null,
-						'tag': 'CHAN',
-						'xrefId': null,
+					value: {
+						level: 1,
+						lineValue: null,
+						tag: 'CHAN',
+						xrefId: null,
 					},
 				}, ],
 			},
@@ -128,10 +128,10 @@ describe('buildFmpFamily', () => {
 			},
 			-1,
 			{
-				'Id': -1,
-				'DateCreated': '2020-04-15T16:43:01',
-				'MotherId': 1000000001,
-				'FatherId': 1000000002,
+				Id: -1,
+				DateCreated: '2020-04-15T16:43:01',
+				MotherId: 1000000001,
+				FatherId: 1000000002,
 			},
 		],
 	];

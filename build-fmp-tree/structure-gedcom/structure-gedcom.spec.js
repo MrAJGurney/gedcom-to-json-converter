@@ -10,20 +10,20 @@ describe('  structureGedcom', () => {
 				'0 @I1@ INDI',
 			];
 			const expectedStructuredGedcom = {
-				'HEAD': [{
-					'value': {
-						'level': 0,
-						'lineValue': null,
-						'tag': 'HEAD',
-						'xrefId': null,
+				HEAD: [{
+					value: {
+						level: 0,
+						lineValue: null,
+						tag: 'HEAD',
+						xrefId: null,
 					},
 				}, ],
-				'INDI': [{
-					'value': {
-						'level': 0,
-						'lineValue': null,
-						'tag': 'INDI',
-						'xrefId': '@I1@',
+				INDI: [{
+					value: {
+						level: 0,
+						lineValue: null,
+						tag: 'INDI',
+						xrefId: '@I1@',
 					},
 				}, ],
 			};
@@ -43,27 +43,27 @@ describe('  structureGedcom', () => {
 				'0 @I2@ INDI',
 			];
 			const expectedStructuredGedcom = {
-				'HEAD': [{
-					'value': {
-						'level': 0,
-						'lineValue': null,
-						'tag': 'HEAD',
-						'xrefId': null,
+				HEAD: [{
+					value: {
+						level: 0,
+						lineValue: null,
+						tag: 'HEAD',
+						xrefId: null,
 					},
 				}, ],
-				'INDI': [{
-					'value': {
-						'level': 0,
-						'lineValue': null,
-						'tag': 'INDI',
-						'xrefId': '@I1@',
+				INDI: [{
+					value: {
+						level: 0,
+						lineValue: null,
+						tag: 'INDI',
+						xrefId: '@I1@',
 					},
 				}, {
-					'value': {
-						'level': 0,
-						'lineValue': null,
-						'tag': 'INDI',
-						'xrefId': '@I2@',
+					value: {
+						level: 0,
+						lineValue: null,
+						tag: 'INDI',
+						xrefId: '@I2@',
 					},
 				}, ],
 
@@ -84,29 +84,29 @@ describe('  structureGedcom', () => {
 				'1 NAME Jane /Doe/',
 			];
 			const expectedStructuredGedcom = {
-				'HEAD': [{
-					'value': {
-						'level': 0,
-						'lineValue': null,
-						'tag': 'HEAD',
-						'xrefId': null,
+				HEAD: [{
+					value: {
+						level: 0,
+						lineValue: null,
+						tag: 'HEAD',
+						xrefId: null,
 					},
 				}, ],
-				'INDI': [{
-					'value': {
-						'level': 0,
-						'lineValue': null,
-						'tag': 'INDI',
-						'xrefId': '@I2@',
+				INDI: [{
+					value: {
+						level: 0,
+						lineValue: null,
+						tag: 'INDI',
+						xrefId: '@I2@',
 
 					},
-					'NAME': [{
-						'value': {
-							'level': 1,
-							'lineValue': 'Jane /Doe/',
-							'tag': 'NAME',
+					NAME: [{
+						value: {
+							level: 1,
+							lineValue: 'Jane /Doe/',
+							tag: 'NAME',
 
-							'xrefId': null,
+							xrefId: null,
 						},
 					}, ],
 				}, ],
@@ -135,78 +135,78 @@ describe('  structureGedcom', () => {
 					'2 SURN Smith',
 				];
 				const expectedStructuredGedcom = {
-					'HEAD': [{
-						'value': {
-							'level': 0,
-							'lineValue': null,
-							'tag': 'HEAD',
-							'xrefId': null,
+					HEAD: [{
+						value: {
+							level: 0,
+							lineValue: null,
+							tag: 'HEAD',
+							xrefId: null,
 						},
 					}, ],
-					'INDI': [{
-						'value': {
-							'level': 0,
-							'lineValue': null,
-							'tag': 'INDI',
-							'xrefId': '@I1@',
+					INDI: [{
+						value: {
+							level: 0,
+							lineValue: null,
+							tag: 'INDI',
+							xrefId: '@I1@',
 
 						},
 					}, {
-						'value': {
-							'level': 0,
-							'lineValue': null,
-							'tag': 'INDI',
-							'xrefId': '@I2@',
+						value: {
+							level: 0,
+							lineValue: null,
+							tag: 'INDI',
+							xrefId: '@I2@',
 						},
 
-						'NAME': [{
-							'value': {
-								'level': 1,
-								'lineValue': 'Jane /Doe/',
-								'tag': 'NAME',
+						NAME: [{
+							value: {
+								level: 1,
+								lineValue: 'Jane /Doe/',
+								tag: 'NAME',
 
-								'xrefId': null,
+								xrefId: null,
 							},
-							'GIVN': [{
-								'value': {
-									'level': 2,
-									'lineValue': 'Jane',
-									'tag': 'GIVN',
+							GIVN: [{
+								value: {
+									level: 2,
+									lineValue: 'Jane',
+									tag: 'GIVN',
 
-									'xrefId': null,
+									xrefId: null,
 								},
 							}, ],
 						}, ],
 					}, {
-						'value': {
-							'level': 0,
-							'lineValue': null,
-							'tag': 'INDI',
-							'xrefId': '@I3@',
+						value: {
+							level: 0,
+							lineValue: null,
+							tag: 'INDI',
+							xrefId: '@I3@',
 						},
-						'NAME': [{
-							'value': {
-								'level': 1,
-								'lineValue': 'John /Smith/',
-								'tag': 'NAME',
-								'xrefId': null,
+						NAME: [{
+							value: {
+								level: 1,
+								lineValue: 'John /Smith/',
+								tag: 'NAME',
+								xrefId: null,
 							},
-							'GIVN': [{
-								'value': {
-									'level': 2,
-									'lineValue': 'John',
-									'tag': 'GIVN',
+							GIVN: [{
+								value: {
+									level: 2,
+									lineValue: 'John',
+									tag: 'GIVN',
 
-									'xrefId': null,
+									xrefId: null,
 								},
 							}, ],
-							'SURN': [{
-								'value': {
-									'level': 2,
-									'lineValue': 'Smith',
-									'tag': 'SURN',
+							SURN: [{
+								value: {
+									level: 2,
+									lineValue: 'Smith',
+									tag: 'SURN',
 
-									'xrefId': null,
+									xrefId: null,
 								},
 							}, ],
 						}, ],

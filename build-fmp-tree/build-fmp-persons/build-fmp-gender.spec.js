@@ -10,12 +10,12 @@ describe('buildFmpBirthFact', () => {
 		],
 		[
 			{
-				'SEX': [{
-					'value': {
-						'level': 1,
-						'lineValue': 'U',
-						'tag': 'SEX',
-						'xrefId': null,
+				SEX: [{
+					value: {
+						level: 1,
+						lineValue: 'U',
+						tag: 'SEX',
+						xrefId: null,
 					},
 				}, ],
 			},
@@ -23,12 +23,12 @@ describe('buildFmpBirthFact', () => {
 		],
 		[
 			{
-				'SEX': [{
-					'value': {
-						'level': 1,
-						'lineValue': 'M',
-						'tag': 'SEX',
-						'xrefId': null,
+				SEX: [{
+					value: {
+						level: 1,
+						lineValue: 'M',
+						tag: 'SEX',
+						xrefId: null,
 					},
 				}, ],
 			},
@@ -36,12 +36,12 @@ describe('buildFmpBirthFact', () => {
 		],
 		[
 			{
-				'SEX': [{
-					'value': {
-						'level': 1,
-						'lineValue': 'F',
-						'tag': 'SEX',
-						'xrefId': null,
+				SEX: [{
+					value: {
+						level: 1,
+						lineValue: 'F',
+						tag: 'SEX',
+						xrefId: null,
 					},
 				}, ],
 			},

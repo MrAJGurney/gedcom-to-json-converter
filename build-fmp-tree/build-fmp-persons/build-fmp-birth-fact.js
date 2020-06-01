@@ -6,8 +6,8 @@ const gedcomPlaceTag = 'PLAC';
 
 const buildFmpBirthFact = structuredGedcom => {
 	const birthFact = {
-		'FactTypeId': 405,
-		'Preferred': true,
+		FactTypeId: 405,
+		Preferred: true,
 	};
 
 	if (!structuredGedcom.hasOwnProperty(gedcomBirthTag)) {
@@ -24,7 +24,7 @@ const buildFmpBirthFact = structuredGedcom => {
 	if (gedcomBirth.hasOwnProperty(gedcomPlaceTag)) {
 		const gedcomPlace = gedcomBirth[gedcomPlaceTag][0];
 		birthFact['Place'] = {
-			'PlaceName': gedcomPlace.value.lineValue,
+			PlaceName: gedcomPlace.value.lineValue,
 		};
 	}
 

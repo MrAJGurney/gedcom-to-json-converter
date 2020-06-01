@@ -75,6 +75,10 @@ module.exports = {
 			'error',
 			'single',
 		],
+		'quote-props': [
+			'error',
+			'consistent-as-needed',
+		],
 		'semi': [
 			'error',
 			'always',

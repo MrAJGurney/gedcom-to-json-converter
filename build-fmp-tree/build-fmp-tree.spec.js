@@ -7,13 +7,13 @@ describe('buildFmpTree', () => {
 		[
 			[],
 			{
-				'Persons': [],
-				'Familys': [],
-				'Childs': [],
-				'SourceRepos': [],
-				'MasterSources': [],
-				'Medias': [],
-				'FactTypes': [],
+				Persons: [],
+				Familys: [],
+				Childs: [],
+				SourceRepos: [],
+				MasterSources: [],
+				Medias: [],
+				FactTypes: [],
 			},
 		],
 		[
@@ -58,36 +58,36 @@ describe('buildFmpTree', () => {
 				'0 TRLR',
 			],
 			{
-				'Persons': [
+				Persons: [
 					{
-						'IsLiving': true,
-						'Gender': 1,
-						'DateCreated': '2020-04-15T16:19:21',
-						'Names': [
+						IsLiving: true,
+						Gender: 1,
+						DateCreated: '2020-04-15T16:19:21',
+						Names: [
 							{
-								'FactTypeId': 100,
-								'GivenNames': 'Gavin',
-								'Surnames': 'Henderson',
+								FactTypeId: 100,
+								GivenNames: 'Gavin',
+								Surnames: 'Henderson',
 							},
 						],
-						'Facts': [
+						Facts: [
 							{
-								'FactTypeId': 405,
-								'DateDetail': '1 Jan 1990',
-								'Place': {
-									'PlaceName': 'Dundee',
+								FactTypeId: 405,
+								DateDetail: '1 Jan 1990',
+								Place: {
+									PlaceName: 'Dundee',
 								},
-								'Preferred': true,
+								Preferred: true,
 							},
 						],
 					},
 				],
-				'Familys': [],
-				'Childs': [],
-				'SourceRepos': [],
-				'MasterSources': [],
-				'Medias': [],
-				'FactTypes': [],
+				Familys: [],
+				Childs: [],
+				SourceRepos: [],
+				MasterSources: [],
+				Medias: [],
+				FactTypes: [],
 			},
 		],
 		[
@@ -164,73 +164,73 @@ describe('buildFmpTree', () => {
 				'0 TRLR',
 			],
 			{
-				'Persons': [
+				Persons: [
 					{
-						'IsLiving': true,
-						'Gender': 1,
-						'DateCreated': '2020-04-15T16:38:50',
-						'Names': [
+						IsLiving: true,
+						Gender: 1,
+						DateCreated: '2020-04-15T16:38:50',
+						Names: [
 							{
-								'FactTypeId': 100,
-								'GivenNames': 'Gavin',
-								'Surnames': 'Henderson',
+								FactTypeId: 100,
+								GivenNames: 'Gavin',
+								Surnames: 'Henderson',
 							},
 						],
-						'Facts': [
+						Facts: [
 							{
-								'FactTypeId': 405,
-								'DateDetail': '1 Jan 1990',
-								'Preferred': true,
+								FactTypeId: 405,
+								DateDetail: '1 Jan 1990',
+								Preferred: true,
 							},
 						],
 					},
 					{
-						'Gender': 2,
-						'DateCreated': '2020-04-15T16:39:15',
-						'Names': [
+						Gender: 2,
+						DateCreated: '2020-04-15T16:39:15',
+						Names: [
 							{
-								'FactTypeId': 100,
-								'GivenNames': 'Jane',
-								'Surnames': 'Reed',
+								FactTypeId: 100,
+								GivenNames: 'Jane',
+								Surnames: 'Reed',
 							},
 						],
-						'Facts': [
+						Facts: [
 							{
-								'FactTypeId': 405,
-								'Place': {
-									'PlaceName': 'Dundee',
+								FactTypeId: 405,
+								Place: {
+									PlaceName: 'Dundee',
 								},
-								'Preferred': true,
+								Preferred: true,
 							},
 						],
 					},
 					{
-						'Gender': 1,
-						'DateCreated': '2020-04-15T16:41:07',
-						'Names': [
+						Gender: 1,
+						DateCreated: '2020-04-15T16:41:07',
+						Names: [
 							{
-								'FactTypeId': 100,
-								'GivenNames': 'Frank',
-								'Surnames': 'Henderson',
+								FactTypeId: 100,
+								GivenNames: 'Frank',
+								Surnames: 'Henderson',
 							},
 						],
 					},
 				],
-				'Familys': [
+				Familys: [
 					{
-						'DateCreated': '2020-04-15T16:40:57',
+						DateCreated: '2020-04-15T16:40:57',
 					},
 				],
-				'Childs': [
+				Childs: [
 					{
-						'RelationshipToFather': 1,
-						'RelationshipToMother': 1,
+						RelationshipToFather: 1,
+						RelationshipToMother: 1,
 					},
 				],
-				'SourceRepos': [],
-				'MasterSources': [],
-				'Medias': [],
-				'FactTypes': [],
+				SourceRepos: [],
+				MasterSources: [],
+				Medias: [],
+				FactTypes: [],
 			},
 		],
 		[
@@ -320,93 +320,93 @@ describe('buildFmpTree', () => {
 				'0 TRLR',
 			],
 			{
-				'Persons': [
+				Persons: [
 					{
-						'IsLiving': true,
-						'Gender': 1,
-						'DateCreated': '2020-04-15T16:42:39',
-						'Names': [
+						IsLiving: true,
+						Gender: 1,
+						DateCreated: '2020-04-15T16:42:39',
+						Names: [
 							{
-								'FactTypeId': 100,
-								'GivenNames': 'Gavin',
-								'Surnames': 'Henderson',
+								FactTypeId: 100,
+								GivenNames: 'Gavin',
+								Surnames: 'Henderson',
 							},
 						],
-						'Facts': [
+						Facts: [
 							{
-								'FactTypeId': 405,
-								'DateDetail': '1 Jan 1990',
-								'Preferred': true,
+								FactTypeId: 405,
+								DateDetail: '1 Jan 1990',
+								Preferred: true,
 							},
 						],
 					},
 					{
-						'IsLiving': true,
-						'Gender': 2,
-						'DateCreated': '2020-04-15T16:43:06',
-						'Names': [
+						IsLiving: true,
+						Gender: 2,
+						DateCreated: '2020-04-15T16:43:06',
+						Names: [
 							{
-								'FactTypeId': 100,
-								'GivenNames': 'Jane',
-								'Surnames': 'Smith',
+								FactTypeId: 100,
+								GivenNames: 'Jane',
+								Surnames: 'Smith',
 							},
 						],
-						'Facts': [
+						Facts: [
 							{
-								'FactTypeId': 405,
-								'Preferred': true,
-							},
-						],
-					},
-					{
-						'IsLiving': true,
-						'Gender': 1,
-						'DateCreated': '2020-04-15T16:43:01',
-						'Names': [
-							{
-								'FactTypeId': 100,
-								'GivenNames': 'Frank',
-								'Surnames': 'Henderson',
-							},
-						],
-						'Facts': [
-							{
-								'FactTypeId': 405,
-								'Preferred': true,
+								FactTypeId: 405,
+								Preferred: true,
 							},
 						],
 					},
 					{
-						'Gender': 1,
-						'DateCreated': '2020-04-15T16:44:00',
-						'Names': [
+						IsLiving: true,
+						Gender: 1,
+						DateCreated: '2020-04-15T16:43:01',
+						Names: [
 							{
-								'FactTypeId': 100,
-								'GivenNames': 'Rachel',
-								'Surnames': 'Henderson',
+								FactTypeId: 100,
+								GivenNames: 'Frank',
+								Surnames: 'Henderson',
+							},
+						],
+						Facts: [
+							{
+								FactTypeId: 405,
+								Preferred: true,
 							},
 						],
 					},
-				],
-				'Familys': [
 					{
-						'DateCreated': '2020-04-15T16:43:01',
+						Gender: 1,
+						DateCreated: '2020-04-15T16:44:00',
+						Names: [
+							{
+								FactTypeId: 100,
+								GivenNames: 'Rachel',
+								Surnames: 'Henderson',
+							},
+						],
 					},
 				],
-				'Childs': [
+				Familys: [
 					{
-						'RelationshipToFather': 1,
-						'RelationshipToMother': 1,
-					},
-					{
-						'RelationshipToFather': 1,
-						'RelationshipToMother': 1,
+						DateCreated: '2020-04-15T16:43:01',
 					},
 				],
-				'SourceRepos': [],
-				'MasterSources': [],
-				'Medias': [],
-				'FactTypes': [],
+				Childs: [
+					{
+						RelationshipToFather: 1,
+						RelationshipToMother: 1,
+					},
+					{
+						RelationshipToFather: 1,
+						RelationshipToMother: 1,
+					},
+				],
+				SourceRepos: [],
+				MasterSources: [],
+				Medias: [],
+				FactTypes: [],
 			},
 		],
 	];

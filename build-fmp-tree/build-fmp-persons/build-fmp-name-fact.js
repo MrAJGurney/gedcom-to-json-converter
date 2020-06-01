@@ -11,9 +11,9 @@ const buildFmpNameFact = structuredGedcom => {
 	const gedcomSurname = gedcomName[gedcomSurnameTag][0];
 
 	return {
-		'FactTypeId': 100,
-		'GivenNames': gedcomGivenName.value.lineValue,
-		'Surnames': gedcomSurname.value.lineValue,
+		FactTypeId: 100,
+		GivenNames: gedcomGivenName.value.lineValue,
+		Surnames: gedcomSurname.value.lineValue,
 	};
 };
 

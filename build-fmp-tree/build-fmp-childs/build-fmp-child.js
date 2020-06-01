@@ -10,11 +10,11 @@ const buildFmpChild = (
 	const personId = personsIds[gedcomId];
 
 	const fmpChild = {
-		'FamilyId': familyId,
-		'RelationshipToFather': 1,
-		'RelationshipToMother': 1,
-		'ChildId': personId,
-		'Id': childId,
+		FamilyId: familyId,
+		RelationshipToFather: 1,
+		RelationshipToMother: 1,
+		ChildId: personId,
+		Id: childId,
 	};
 
 	return fmpChild;

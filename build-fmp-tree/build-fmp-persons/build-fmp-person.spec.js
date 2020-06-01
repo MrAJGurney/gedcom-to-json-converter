@@ -8,345 +8,345 @@ describe('buildFmpPerson', () => {
 	const gedcomIndividuals = [
 		[
 			{
-				'NAME': [
+				NAME: [
 					{
-						'GIVN': [
+						GIVN: [
 							{
-								'value': {
-									'level': 2,
-									'lineValue': 'Gavin',
-									'tag': 'GIVN',
-									'xrefId': null,
+								value: {
+									level: 2,
+									lineValue: 'Gavin',
+									tag: 'GIVN',
+									xrefId: null,
 								},
 							},
 						],
-						'SURN': [
+						SURN: [
 							{
-								'value': {
-									'level': 2,
-									'lineValue': 'Henderson',
-									'tag': 'SURN',
-									'xrefId': null,
+								value: {
+									level: 2,
+									lineValue: 'Henderson',
+									tag: 'SURN',
+									xrefId: null,
 								},
 							},
 						],
-						'value': {
-							'level': 1,
-							'lineValue': 'Gavin /Henderson/',
-							'tag': 'NAME',
-							'xrefId': null,
+						value: {
+							level: 1,
+							lineValue: 'Gavin /Henderson/',
+							tag: 'NAME',
+							xrefId: null,
 						},
 					},
 				],
-				'SEX': [
+				SEX: [
 					{
-						'value': {
-							'level': 1,
-							'lineValue': 'M',
-							'tag': 'SEX',
-							'xrefId': null,
+						value: {
+							level: 1,
+							lineValue: 'M',
+							tag: 'SEX',
+							xrefId: null,
 						},
 					},
 				],
-				'BIRT': [
+				BIRT: [
 					{
-						'DATE': [
+						DATE: [
 							{
-								'value': {
-									'level': 2,
-									'lineValue': '1 Jan 1990',
-									'tag': 'DATE',
-									'xrefId': null,
+								value: {
+									level: 2,
+									lineValue: '1 Jan 1990',
+									tag: 'DATE',
+									xrefId: null,
 								},
 							},
 						],
-						'value': {
-							'level': 1,
-							'lineValue': null,
-							'tag': 'BIRT',
-							'xrefId': null,
+						value: {
+							level: 1,
+							lineValue: null,
+							tag: 'BIRT',
+							xrefId: null,
 						},
 					},
 				],
-				'CHAN': [
+				CHAN: [
 					{
-						'DATE': [
+						DATE: [
 							{
-								'TIME': [
+								TIME: [
 									{
-										'value': {
-											'level': 3,
-											'lineValue': '16:38:50',
-											'tag': 'TIME',
-											'xrefId': null,
+										value: {
+											level: 3,
+											lineValue: '16:38:50',
+											tag: 'TIME',
+											xrefId: null,
 										},
 									},
 								],
-								'value': {
-									'level': 2,
-									'lineValue': '15 APR 2020',
-									'tag': 'DATE',
-									'xrefId': null,
+								value: {
+									level: 2,
+									lineValue: '15 APR 2020',
+									tag: 'DATE',
+									xrefId: null,
 								},
 							},
 						],
-						'value': {
-							'level': 1,
-							'lineValue': null,
-							'tag': 'CHAN',
-							'xrefId': null,
+						value: {
+							level: 1,
+							lineValue: null,
+							tag: 'CHAN',
+							xrefId: null,
 						},
 					},
 				],
-				'value': {
-					'level': 0,
-					'lineValue': null,
-					'tag': 'INDI',
-					'xrefId': '@I1@',
+				value: {
+					level: 0,
+					lineValue: null,
+					tag: 'INDI',
+					xrefId: '@I1@',
 				},
 			},
 			100,
 			{
-				'Id': 100,
-				'IsLiving': true,
-				'Gender': 1,
-				'DateCreated': '2020-04-15T16:38:50',
-				'Names': [
+				Id: 100,
+				IsLiving: true,
+				Gender: 1,
+				DateCreated: '2020-04-15T16:38:50',
+				Names: [
 					{
-						'FactTypeId': 100,
-						'GivenNames': 'Gavin',
-						'Surnames': 'Henderson',
+						FactTypeId: 100,
+						GivenNames: 'Gavin',
+						Surnames: 'Henderson',
 					},
 				],
-				'Facts': [
+				Facts: [
 					{
-						'FactTypeId': 405,
-						'DateDetail': '1 Jan 1990',
-						'Preferred': true,
+						FactTypeId: 405,
+						DateDetail: '1 Jan 1990',
+						Preferred: true,
 					},
 				],
 			},
 		],
 		[
 			{
-				'NAME': [
+				NAME: [
 					{
-						'GIVN': [
+						GIVN: [
 							{
-								'value': '2 GIVN Jane',
-								'value': {
-									'level': 2,
-									'lineValue': 'Jane',
-									'tag': 'GIVN',
-									'xrefId': null,
+								value: '2 GIVN Jane',
+								value: {
+									level: 2,
+									lineValue: 'Jane',
+									tag: 'GIVN',
+									xrefId: null,
 								},
 							},
 						],
-						'SURN': [
+						SURN: [
 							{
-								'value': {
-									'level': 2,
-									'lineValue': 'Reed',
-									'tag': 'SURN',
-									'xrefId': null,
+								value: {
+									level: 2,
+									lineValue: 'Reed',
+									tag: 'SURN',
+									xrefId: null,
 								},
 							},
 						],
-						'value': {
-							'level': 1,
-							'lineValue': 'Jane /Reed/',
-							'tag': 'NAME',
-							'xrefId': null,
+						value: {
+							level: 1,
+							lineValue: 'Jane /Reed/',
+							tag: 'NAME',
+							xrefId: null,
 						},
 					},
 				],
-				'SEX': [
+				SEX: [
 					{
-						'value': {
-							'level': 1,
-							'lineValue': 'F',
-							'tag': 'SEX',
-							'xrefId': null,
+						value: {
+							level: 1,
+							lineValue: 'F',
+							tag: 'SEX',
+							xrefId: null,
 						},
 					},
 				],
-				'BIRT': [
+				BIRT: [
 					{
-						'PLAC': [
+						PLAC: [
 							{
-								'value': {
-									'level': 2,
-									'lineValue': 'Dundee',
-									'tag': 'PLAC',
-									'xrefId': null,
+								value: {
+									level: 2,
+									lineValue: 'Dundee',
+									tag: 'PLAC',
+									xrefId: null,
 								},
 							},
 						],
-						'value': {
-							'level': 1,
-							'lineValue': null,
-							'tag': 'BIRT',
-							'xrefId': null,
+						value: {
+							level: 1,
+							lineValue: null,
+							tag: 'BIRT',
+							xrefId: null,
 						},
 					},
 				],
-				'CHAN': [
+				CHAN: [
 					{
-						'DATE': [
+						DATE: [
 							{
-								'TIME': [
+								TIME: [
 									{
-										'value': {
-											'level': 3,
-											'lineValue': '16:39:15',
-											'tag': 'TIME',
-											'xrefId': null,
+										value: {
+											level: 3,
+											lineValue: '16:39:15',
+											tag: 'TIME',
+											xrefId: null,
 										},
 									},
 								],
-								'value': {
-									'level': 2,
-									'lineValue': '15 APR 2020',
-									'tag': 'DATE',
-									'xrefId': null,
+								value: {
+									level: 2,
+									lineValue: '15 APR 2020',
+									tag: 'DATE',
+									xrefId: null,
 								},
 							},
 						],
-						'value': {
-							'level': 1,
-							'lineValue': null,
-							'tag': 'CHAN',
-							'xrefId': null,
+						value: {
+							level: 1,
+							lineValue: null,
+							tag: 'CHAN',
+							xrefId: null,
 						},
 					},
 				],
-				'value': {
-					'level': 0,
-					'lineValue': '@I2@',
-					'tag': 'INDI',
-					'xrefId': null,
+				value: {
+					level: 0,
+					lineValue: '@I2@',
+					tag: 'INDI',
+					xrefId: null,
 				},
 			},
 			500,
 			{
-				'Id': 500,
-				'IsLiving': true,
-				'Gender': 2,
-				'DateCreated': '2020-04-15T16:39:15',
-				'Names': [
+				Id: 500,
+				IsLiving: true,
+				Gender: 2,
+				DateCreated: '2020-04-15T16:39:15',
+				Names: [
 					{
-						'FactTypeId': 100,
-						'GivenNames': 'Jane',
-						'Surnames': 'Reed',
+						FactTypeId: 100,
+						GivenNames: 'Jane',
+						Surnames: 'Reed',
 					},
 				],
-				'Facts': [
+				Facts: [
 					{
-						'FactTypeId': 405,
-						'Place': {
-							'PlaceName': 'Dundee',
+						FactTypeId: 405,
+						Place: {
+							PlaceName: 'Dundee',
 						},
-						'Preferred': true,
+						Preferred: true,
 					},
 				],
 			},
 		],
 		[
 			{
-				'NAME': [
+				NAME: [
 					{
-						'GIVN': [
+						GIVN: [
 							{
-								'value': {
-									'level': 2,
-									'lineValue': 'Frank',
-									'tag': 'GIVN',
-									'xrefId': null,
+								value: {
+									level: 2,
+									lineValue: 'Frank',
+									tag: 'GIVN',
+									xrefId: null,
 								},
 							},
 						],
-						'SURN': [
+						SURN: [
 							{
-								'value': {
-									'level': 2,
-									'lineValue': 'Henderson',
-									'tag': 'SURN',
-									'xrefId': null,
+								value: {
+									level: 2,
+									lineValue: 'Henderson',
+									tag: 'SURN',
+									xrefId: null,
 								},
 							},
 						],
-						'value': {
-							'level': 1,
-							'lineValue': 'Frank /Henderson/',
-							'tag': 'NAME',
-							'xrefId': null,
+						value: {
+							level: 1,
+							lineValue: 'Frank /Henderson/',
+							tag: 'NAME',
+							xrefId: null,
 						},
 					},
 				],
-				'SEX': [
+				SEX: [
 					{
-						'value': {
-							'level': 1,
-							'lineValue': 'M',
-							'tag': 'SEX',
-							'xrefId': null,
+						value: {
+							level: 1,
+							lineValue: 'M',
+							tag: 'SEX',
+							xrefId: null,
 						},
 					},
 				],
-				'CHAN': [
+				CHAN: [
 					{
-						'DATE': [
+						DATE: [
 							{
-								'TIME': [
+								TIME: [
 									{
-										'value': {
-											'level': 3,
-											'lineValue': '16:41:07',
-											'tag': 'TIME',
-											'xrefId': null,
+										value: {
+											level: 3,
+											lineValue: '16:41:07',
+											tag: 'TIME',
+											xrefId: null,
 										},
 									},
 								],
-								'value': {
-									'level': 2,
-									'lineValue': '15 APR 2020',
-									'tag': 'DATE',
-									'xrefId': null,
+								value: {
+									level: 2,
+									lineValue: '15 APR 2020',
+									tag: 'DATE',
+									xrefId: null,
 								},
 							},
 						],
-						'value': {
-							'level': 1,
-							'lineValue': null,
-							'tag': 'CHAN',
-							'xrefId': null,
+						value: {
+							level: 1,
+							lineValue: null,
+							tag: 'CHAN',
+							xrefId: null,
 						},
 					},
 				],
-				'value': {
-					'level': 0,
-					'lineValue': null,
-					'tag': 'INDI',
-					'xrefId': '@I3@',
+				value: {
+					level: 0,
+					lineValue: null,
+					tag: 'INDI',
+					xrefId: '@I3@',
 				},
 			},
 			24,
 			{
-				'Id': 24,
-				'IsLiving': true,
-				'Gender': 1,
-				'DateCreated': '2020-04-15T16:41:07',
-				'Names': [
+				Id: 24,
+				IsLiving: true,
+				Gender: 1,
+				DateCreated: '2020-04-15T16:41:07',
+				Names: [
 					{
-						'FactTypeId': 100,
-						'GivenNames': 'Frank',
-						'Surnames': 'Henderson',
+						FactTypeId: 100,
+						GivenNames: 'Frank',
+						Surnames: 'Henderson',
 					},
 				],
-				'Facts': [
+				Facts: [
 					{
-						'FactTypeId': 405,
-						'Preferred': true,
+						FactTypeId: 405,
+						Preferred: true,
 					},
 				],
 			},

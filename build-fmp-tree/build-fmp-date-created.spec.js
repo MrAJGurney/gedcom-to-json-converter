@@ -6,20 +6,20 @@ describe('buildFmpDateCreated', () => {
 	const structuredGedcoms = [
 		[
 			{
-				'CHAN': [{
-					'DATE': [{
-						'value': {
-							'level': 2,
-							'lineValue': '10 May 2010',
-							'tag': 'DATE',
-							'xrefId': null,
+				CHAN: [{
+					DATE: [{
+						value: {
+							level: 2,
+							lineValue: '10 May 2010',
+							tag: 'DATE',
+							xrefId: null,
 						},
 					}, ],
-					'value': {
-						'level': 1,
-						'lineValue': null,
-						'tag': 'CHAN',
-						'xrefId': null,
+					value: {
+						level: 1,
+						lineValue: null,
+						tag: 'CHAN',
+						xrefId: null,
 					},
 				}, ],
 			},
@@ -27,29 +27,29 @@ describe('buildFmpDateCreated', () => {
 		],
 		[
 			{
-				'CHAN': [{
-					'DATE': [{
-						'TIME': [{
-							'value': {
-								'level': 3,
-								'lineValue': '16:38:50',
-								'tag': 'TIME',
-								'xrefId': null,
+				CHAN: [{
+					DATE: [{
+						TIME: [{
+							value: {
+								level: 3,
+								lineValue: '16:38:50',
+								tag: 'TIME',
+								xrefId: null,
 							},
 						}, ],
-						'value': {
-							'level': 2,
-							'lineValue': '15 APR 2020',
-							'tag': 'DATE',
-							'xrefId': null,
+						value: {
+							level: 2,
+							lineValue: '15 APR 2020',
+							tag: 'DATE',
+							xrefId: null,
 						},
 					}, ],
-					'value': '1 CHAN',
-					'value': {
-						'level': 1,
-						'lineValue': null,
-						'tag': 'CHAN',
-						'xrefId': null,
+					value: '1 CHAN',
+					value: {
+						level: 1,
+						lineValue: null,
+						tag: 'CHAN',
+						xrefId: null,
 					},
 				}, ],
 			},

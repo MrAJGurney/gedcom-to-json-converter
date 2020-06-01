@@ -8,12 +8,12 @@ const { buildFmpBirthFact, } = require('./build-fmp-birth-fact');
 
 const buildFmpPerson = (gedcomIndividual, personId)=> {
 	const fmpPerson = {
-		'Id': personId,
-		'IsLiving': buildFmpIsLiving(gedcomIndividual),
-		'Gender': buildFmpGender(gedcomIndividual),
-		'DateCreated': buildFmpDateCreated(gedcomIndividual),
-		'Names': buildNames(gedcomIndividual),
-		'Facts': buildFacts(gedcomIndividual),
+		Id: personId,
+		IsLiving: buildFmpIsLiving(gedcomIndividual),
+		Gender: buildFmpGender(gedcomIndividual),
+		DateCreated: buildFmpDateCreated(gedcomIndividual),
+		Names: buildNames(gedcomIndividual),
+		Facts: buildFacts(gedcomIndividual),
 	};
 
 	return fmpPerson;

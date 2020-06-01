@@ -41,13 +41,13 @@ const buildFmpTree = gedcomLines => {
 	);
 
 	return {
-		'Persons': fmpPersons,
-		'Familys': fmpFamilys,
-		'Childs': fmpChilds,
-		'SourceRepos': [],
-		'MasterSources': [],
-		'Medias': [],
-		'FactTypes': [],
+		Persons: fmpPersons,
+		Familys: fmpFamilys,
+		Childs: fmpChilds,
+		SourceRepos: [],
+		MasterSources: [],
+		Medias: [],
+		FactTypes: [],
 	};
 };
 
