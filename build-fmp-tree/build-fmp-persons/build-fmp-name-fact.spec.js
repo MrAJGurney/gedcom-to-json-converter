@@ -2,81 +2,36 @@
 
 const { buildFmpNameFact, } = require('./build-fmp-name-fact');
 
-describe('buildFmpBirthFact', () => {
-	const structuredGedcoms = [
-		[
-			{
-				NAME: [{
-					GIVN: [{
-						value: {
-							level: 2,
-							lineValue: 'John',
-							tag: 'GIVN',
-							xrefId: null,
-						},
-					}, ],
-					SURN: [{
-						value: {
-							level: 2,
-							lineValue: 'Smith',
-							tag: 'SURN',
-							xrefId: null,
-						},
-					}, ],
+describe('buildFmpNameFact', () => {
+	const givenNameAndSurnameCase = {
+		gedcomPerson: {
+			NAME: [{
+				GIVN: [{
 					value: {
-						level: 1,
-						lineValue: 'John /Smith/',
-						tag: 'NAME',
-						xrefId: null,
+						lineValue: 'John',
 					},
 				}, ],
-			},
-			{
-				FactTypeId: 100,
-				GivenNames: 'John',
-				Surnames: 'Smith',
-			},
-		],
-		[
-			{
-				NAME: [{
-					GIVN: [{
-						value: {
-							level: 2,
-							lineValue: 'Jane',
-							tag: 'GIVN',
-							xrefId: null,
-						},
-					}, ],
-					SURN: [{
-						value: {
-							level: 2,
-							lineValue: 'Doe',
-							tag: 'SURN',
-							xrefId: null,
-						},
-					}, ],
+				SURN: [{
 					value: {
-						level: 2,
-						lineValue: 'Jane /Doe/',
-						tag: 'NAME',
-						xrefId: null,
+						lineValue: 'Smith',
 					},
 				}, ],
-			},
-			{
-				FactTypeId: 100,
-				GivenNames: 'Jane',
-				Surnames: 'Doe',
-			},
-		],
-	];
+			}, ],
+		},
+		expectedNameFact: {
+			FactTypeId: 100,
+			GivenNames: 'John',
+			Surnames: 'Smith',
+		},
+	};
 
-	describe('when given structured gedcom', () => {
-		it.each(structuredGedcoms)(
-			'builds a name fact',
-			(structuredGedcom, expectedNameFact) => {
-				const actualNameFact = buildFmpNameFact(structuredGedcom);
+	describe('with parameters to build a name fact', () => {
+		it.each([
+			givenNameAndSurnameCase,
+		])(
+			'builds the expected name fact',
+			({ gedcomPerson, expectedNameFact, }) => {
+				const actualNameFact = buildFmpNameFact(gedcomPerson);
 
 				expect(actualNameFact).toStrictEqual(expectedNameFact);
 			}

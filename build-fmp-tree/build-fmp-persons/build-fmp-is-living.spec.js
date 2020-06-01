@@ -3,31 +3,28 @@
 const { buildFmpIsLiving, } = require('./build-fmp-is-living');
 
 describe('buildFmpBirthFact', () => {
-	const structuredGedcoms = [
-		[
-			{},
-			true,
-		],
-		[
-			{
-				DEAT: [{
-					value: {
-						level: 2,
-						lineValue: '1960',
-						tag: 'DATE',
-						xrefId: null,
-					},
-				}, ],
-			},
-			false,
-		],
-	];
 
-	describe('when given structured gedcom', () => {
-		it.each(structuredGedcoms)(
-			'builds an \'IsLiving\' property',
-			(structuredGedcom, expectedIsLiving) => {
-				const actualIsLiving = buildFmpIsLiving(structuredGedcom);
+	const noDeathCase = {
+		gedcomPerson: {},
+		expectedIsLiving: true,
+	};
+
+	const deathCase = {
+		gedcomPerson: {
+			DEAT: [{
+			}, ],
+		},
+		expectedIsLiving: false,
+	};
+
+	describe('with parameters to build an \'isLiving\' property', () => {
+		it.each([
+			noDeathCase,
+			deathCase,
+		])(
+			'builds the expected \'IsLiving\' property',
+			({ gedcomPerson, expectedIsLiving, }) => {
+				const actualIsLiving = buildFmpIsLiving(gedcomPerson);
 
 				expect(actualIsLiving).toStrictEqual(expectedIsLiving);
 			}

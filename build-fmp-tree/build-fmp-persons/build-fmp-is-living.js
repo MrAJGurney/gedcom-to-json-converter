@@ -2,8 +2,8 @@
 
 const gedcomDeathTag = 'DEAT';
 
-const buildFmpIsLiving = structuredGedcom => {
-	return !structuredGedcom.hasOwnProperty(gedcomDeathTag);
+const buildFmpIsLiving = gedcomPerson => {
+	return !gedcomPerson.hasOwnProperty(gedcomDeathTag);
 };
 
 module.exports =  {

@@ -4,12 +4,12 @@ const { buildFmpPerson, } = require('./build-fmp-person');
 
 const GEDCOM_INDIVIDUAL_TAG = 'INDI';
 
-const buildFmpPersons = (structuredGedcom, fmpPersonsIds) => {
-	const gedcomIndividuals = getGedcomIndividuals(structuredGedcom);
+const buildFmpPersons = (gedcom, personsIds) => {
+	const gedcomIndividuals = getGedcomIndividuals(gedcom);
 
 	const fmpPersons = gedcomIndividuals.map(individual => {
 		const { value: { xrefId, }, } = individual;
-		const personId = fmpPersonsIds[xrefId];
+		const personId = personsIds[xrefId];
 		const fmpPerson = buildFmpPerson(individual, personId);
 		return fmpPerson;
 	});
@@ -17,12 +17,12 @@ const buildFmpPersons = (structuredGedcom, fmpPersonsIds) => {
 	return fmpPersons;
 };
 
-const getGedcomIndividuals = structuredGedcom => {
-	if (!structuredGedcom.hasOwnProperty(GEDCOM_INDIVIDUAL_TAG)) {
+const getGedcomIndividuals = gedcom => {
+	if (!gedcom.hasOwnProperty(GEDCOM_INDIVIDUAL_TAG)) {
 		return [];
 	}
 
-	return structuredGedcom[GEDCOM_INDIVIDUAL_TAG];
+	return gedcom[GEDCOM_INDIVIDUAL_TAG];
 };
 
 module.exports = { buildFmpPersons, };

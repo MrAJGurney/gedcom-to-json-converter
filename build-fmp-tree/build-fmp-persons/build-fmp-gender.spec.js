@@ -3,57 +3,54 @@
 const { buildFmpGender, } = require('./build-fmp-gender');
 
 describe('buildFmpBirthFact', () => {
-	const structuredGedcoms = [
-		[
-			{},
-			0,
-		],
-		[
-			{
-				SEX: [{
-					value: {
-						level: 1,
-						lineValue: 'U',
-						tag: 'SEX',
-						xrefId: null,
-					},
-				}, ],
-			},
-			0,
-		],
-		[
-			{
-				SEX: [{
-					value: {
-						level: 1,
-						lineValue: 'M',
-						tag: 'SEX',
-						xrefId: null,
-					},
-				}, ],
-			},
-			1,
-		],
-		[
-			{
-				SEX: [{
-					value: {
-						level: 1,
-						lineValue: 'F',
-						tag: 'SEX',
-						xrefId: null,
-					},
-				}, ],
-			},
-			2,
-		],
-	];
+	const noGenderCase = {
+		gedcomPerson: {},
+		expectedGender: 0,
+	};
 
-	describe('when given structured gedcom', () => {
-		it.each(structuredGedcoms)(
-			'builds a \'gender\' property',
-			(structuredGedcom, expectedGender) => {
-				const actualGender = buildFmpGender(structuredGedcom);
+	const unknownGenderCase = {
+		gedcomPerson: {
+			SEX: [{
+				value: {
+					lineValue: 'U',
+				},
+			}, ],
+		},
+		expectedGender: 0,
+	};
+
+	const maleGenderCase = {
+		gedcomPerson: {
+			SEX: [{
+				value: {
+					lineValue: 'M',
+				},
+			}, ],
+		},
+		expectedGender: 1,
+	};
+
+	const femaleGenderCase = {
+		gedcomPerson: {
+			SEX: [{
+				value: {
+					lineValue: 'F',
+				},
+			}, ],
+		},
+		expectedGender: 2,
+	};
+
+	describe('with parameters to build a gender', () => {
+		it.each([
+			noGenderCase,
+			unknownGenderCase,
+			maleGenderCase,
+			femaleGenderCase,
+		])(
+			'builds the expected gender',
+			({ gedcomPerson, expectedGender, }) => {
+				const actualGender = buildFmpGender(gedcomPerson);
 
 				expect(actualGender).toStrictEqual(expectedGender);
 			}

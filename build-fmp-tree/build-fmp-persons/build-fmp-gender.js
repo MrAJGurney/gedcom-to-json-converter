@@ -14,12 +14,12 @@ const fmpSexValues = {
 	unknown: 0,
 };
 
-const buildFmpGender = structuredGedcom => {
-	if (!structuredGedcom.hasOwnProperty(gedcomSexTag)) {
+const buildFmpGender = gedcom => {
+	if (!gedcom.hasOwnProperty(gedcomSexTag)) {
 		return fmpSexValues.unknown;
 	}
 
-	const gedcomSex = structuredGedcom[gedcomSexTag][0];
+	const gedcomSex = gedcom[gedcomSexTag][0];
 
 	switch (gedcomSex.value.lineValue) {
 	case gedcomSexValues.male:

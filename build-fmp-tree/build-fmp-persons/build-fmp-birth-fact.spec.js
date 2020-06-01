@@ -3,125 +3,98 @@
 const { buildFmpBirthFact, } = require('./build-fmp-birth-fact');
 
 describe('buildFmpBirthFact', () => {
-	const structuredGedcoms = [
-		[
-			{},
-			{
-				FactTypeId: 405,
-				Preferred: true,
-			},
-		],
-		[
-			{
-				BIRT: [{
-					value: {
-						level: 1,
-						lineValue: null,
-						tag: 'BIRT',
-						xrefId: null,
-					},
-				}, ],
-			},
-			{
-				FactTypeId: 405,
-				Preferred: true,
-			},
-		],
-		[
-			{
-				BIRT: [{
-					PLAC: [{
-						value: {
-							level: 2,
-							lineValue: 'Dundee',
-							tag: 'PLAC',
-							xrefId: null,
-						},
-					}, ],
-					value: {
-						level: 1,
-						lineValue: null,
-						tag: 'BIRT',
-						xrefId: null,
-					},
-				}, ],
-			},
-			{
-				FactTypeId: 405,
-				Place: {
-					PlaceName: 'Dundee',
-				},
-				Preferred: true,
-			},
-		],
-		[
-			{
-				BIRT: [{
-					DATE: [{
-						value: {
-							level: 2,
-							lineValue: '1 Jan 1990',
-							tag: 'DATE',
-							xrefId: null,
-						},
-					}, ],
-					value: {
-						level: 1,
-						lineValue: null,
-						tag: 'BIRT',
-						xrefId: null,
-					},
-				}, ],
-			},
-			{
-				FactTypeId: 405,
-				DateDetail: '1 Jan 1990',
-				Preferred: true,
-			},
-		],
-		[
-			{
-				BIRT: [{
-					PLAC: [{
-						value: {
-							level: 2,
-							lineValue: 'Dundee',
-							tag: 'PLAC',
-							xrefId: null,
-						},
-					}, ],
-					DATE: [{
-						value: {
-							level: 2,
-							lineValue: '1 Jan 1990',
-							tag: 'DATE',
-							xrefId: null,
-						},
-					}, ],
-					value: {
-						level: 1,
-						lineValue: null,
-						tag: 'BIRT',
-						xrefId: null,
-					},
-				}, ],
-			},
-			{
-				FactTypeId: 405,
-				DateDetail: '1 Jan 1990',
-				Place: {
-					PlaceName: 'Dundee',
-				},
-				Preferred: true,
-			},
-		],
-	];
 
-	describe('when given structured gedcom', () => {
-		it.each(structuredGedcoms)(
-			'builds a birth fact',
-			(structuredGedcom, expectedBirthFact) => {
-				const actualBirthFact = buildFmpBirthFact(structuredGedcom);
+	const noBirthCase = {
+		gedcomPerson: {},
+		expectedBirthFact: {
+			FactTypeId: 405,
+			Preferred: true,
+		},
+	};
+
+	const birthCase = {
+		gedcomPerson: {
+			BIRT: [{
+			}, ],
+		},
+		expectedBirthFact: {
+			FactTypeId: 405,
+			Preferred: true,
+		},
+	};
+
+	const birthPlaceCase = {
+		gedcomPerson: {
+			BIRT: [{
+				PLAC: [{
+					value: {
+						lineValue: 'Dundee',
+					},
+				}, ],
+			}, ],
+		},
+		expectedBirthFact: {
+			FactTypeId: 405,
+			Place: {
+				PlaceName: 'Dundee',
+			},
+			Preferred: true,
+		},
+	};
+
+	const birthDateCase = {
+		gedcomPerson: {
+			BIRT: [{
+				DATE: [{
+					value: {
+						lineValue: '1 Jan 1990',
+					},
+				}, ],
+			}, ],
+		},
+		expectedBirthFact: {
+			FactTypeId: 405,
+			DateDetail: '1 Jan 1990',
+			Preferred: true,
+		},
+	};
+
+	const birthDateAndPlaceCase = {
+		gedcomPerson: {
+			BIRT: [{
+				DATE: [{
+					value: {
+						lineValue: '2 Mar 1825',
+					},
+				}, ],
+				PLAC: [{
+					value: {
+						lineValue: 'London',
+					},
+				}, ],
+			}, ],
+		},
+		expectedBirthFact: {
+			FactTypeId: 405,
+			DateDetail: '2 Mar 1825',
+			Place: {
+				PlaceName: 'London',
+			},
+			Preferred: true,
+		},
+	};
+
+	describe('with parameters to build a birth fact', () => {
+		it.each([
+			noBirthCase,
+			birthCase,
+			birthPlaceCase,
+			birthDateCase,
+			birthDateAndPlaceCase,
+		])(
+			'builds the expected birth fact',
+			({ gedcomPerson, expectedBirthFact, }) => {
+				const actualBirthFact = buildFmpBirthFact(gedcomPerson);
 
 				expect(actualBirthFact).toStrictEqual(expectedBirthFact);
 			}

@@ -4,17 +4,19 @@ const gedcomBirthTag = 'BIRT';
 const gedcomDateTag = 'DATE';
 const gedcomPlaceTag = 'PLAC';
 
-const buildFmpBirthFact = structuredGedcom => {
+const fmpBirthFactTypeId = 405;
+
+const buildFmpBirthFact = gedcomPerson => {
 	const birthFact = {
-		FactTypeId: 405,
+		FactTypeId: fmpBirthFactTypeId,
 		Preferred: true,
 	};
 
-	if (!structuredGedcom.hasOwnProperty(gedcomBirthTag)) {
+	if (!gedcomPerson.hasOwnProperty(gedcomBirthTag)) {
 		return birthFact;
 	}
 
-	const gedcomBirth = structuredGedcom[gedcomBirthTag][0];
+	const gedcomBirth = gedcomPerson[gedcomBirthTag][0];
 
 	if (gedcomBirth.hasOwnProperty(gedcomDateTag)) {
 		const gedcomDate = gedcomBirth[gedcomDateTag][0];

@@ -4,12 +4,12 @@ const { buildFmpIdGenerator, } =  require('../build-fmp-id-generator');
 
 const GEDCOM_INDIVIDUAL_TAG = 'INDI';
 
-const buildFmpPersonsIds = structuredGedcom => {
+const buildFmpPersonsIds = gedcom => {
 	const initialValue = 1000000;
 	const increment = 1;
 	const personIdGenerator = buildFmpIdGenerator(initialValue, increment);
 
-	const gedcomIndividuals = getGedcomIndividuals(structuredGedcom);
+	const gedcomIndividuals = getGedcomIndividuals(gedcom);
 
 	const fmpPersonsIds = {};
 
@@ -21,12 +21,12 @@ const buildFmpPersonsIds = structuredGedcom => {
 	return fmpPersonsIds;
 };
 
-const getGedcomIndividuals = structuredGedcom => {
-	if (!structuredGedcom.hasOwnProperty(GEDCOM_INDIVIDUAL_TAG)) {
+const getGedcomIndividuals = gedcom => {
+	if (!gedcom.hasOwnProperty(GEDCOM_INDIVIDUAL_TAG)) {
 		return [];
 	}
 
-	return structuredGedcom[GEDCOM_INDIVIDUAL_TAG];
+	return gedcom[GEDCOM_INDIVIDUAL_TAG];
 };
 
 module.exports = { buildFmpPersonsIds, };
