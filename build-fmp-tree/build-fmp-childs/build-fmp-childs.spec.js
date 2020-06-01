@@ -28,12 +28,12 @@ describe('buildFmpChilds', () => {
 
 	const noChildrenCase = {
 		gedcom: {
-			FAM: [],
+			FAM: [
+				{},
+			],
 		},
 		personsIds: {},
-		familysIds: {
-			'@F1@': 1,
-		},
+		familysIds: {},
 		childIds: [],
 		expectedChilds: [],
 	};
