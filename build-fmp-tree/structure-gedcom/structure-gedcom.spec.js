@@ -1,223 +1,207 @@
 'use strict';
 
-const {   structureGedcom, } = require('./structure-gedcom');
+const { structureGedcom, } = require('./structure-gedcom');
 
-describe('  structureGedcom', () => {
-	describe('when given simple gedcom lines', () => {
-		it('structures the gedcom', () => {
-			const gedcomLines = [
-				'0 HEAD',
-				'0 @I1@ INDI',
-			];
-			const expectedStructuredGedcom = {
-				HEAD: [{
+describe('structureGedcom', () => {
+	const simpleGedcomCase = {
+		gedcomLines: [
+			'0 HEAD',
+			'0 @I1@ INDI',
+		],
+		expectedStructuredGedcom: {
+			HEAD: [{
+				value: {
+					level: 0,
+					lineValue: null,
+					tag: 'HEAD',
+					xrefId: null,
+				},
+			}, ],
+			INDI: [{
+				value: {
+					level: 0,
+					lineValue: null,
+					tag: 'INDI',
+					xrefId: '@I1@',
+				},
+			}, ],
+		},
+	};
+
+	const multipleInstancesOfTagCase = {
+		gedcomLines: [
+			'0 HEAD',
+			'0 @I1@ INDI',
+			'0 @I2@ INDI',
+		],
+		expectedStructuredGedcom: {
+			HEAD: [{
+				value: {
+					level: 0,
+					lineValue: null,
+					tag: 'HEAD',
+					xrefId: null,
+				},
+			}, ],
+			INDI: [{
+				value: {
+					level: 0,
+					lineValue: null,
+					tag: 'INDI',
+					xrefId: '@I1@',
+				},
+			}, {
+				value: {
+					level: 0,
+					lineValue: null,
+					tag: 'INDI',
+					xrefId: '@I2@',
+				},
+			}, ],
+		},
+	};
+
+	const hierarchicalCase = {
+		gedcomLines: [
+			'0 HEAD',
+			'0 @I2@ INDI',
+			'1 NAME Jane /Doe/',
+		],
+		expectedStructuredGedcom: {
+			HEAD: [{
+				value: {
+					level: 0,
+					lineValue: null,
+					tag: 'HEAD',
+					xrefId: null,
+				},
+			}, ],
+			INDI: [{
+				value: {
+					level: 0,
+					lineValue: null,
+					tag: 'INDI',
+					xrefId: '@I2@',
+
+				},
+				NAME: [{
 					value: {
-						level: 0,
-						lineValue: null,
-						tag: 'HEAD',
+						level: 1,
+						lineValue: 'Jane /Doe/',
+						tag: 'NAME',
 						xrefId: null,
 					},
 				}, ],
-				INDI: [{
+			}, ],
+		},
+	};
+
+	const hierarchicalAndMultipleInstancesOfTagCase = {
+		gedcomLines: [
+			'0 HEAD',
+			'0 @I1@ INDI',
+			'0 @I2@ INDI',
+			'1 NAME Jane /Doe/',
+			'2 GIVN Jane',
+			'0 @I3@ INDI',
+			'1 NAME John /Smith/',
+			'2 GIVN John',
+			'2 SURN Smith',
+		],
+		expectedStructuredGedcom: {
+			HEAD: [{
+				value: {
+					level: 0,
+					lineValue: null,
+					tag: 'HEAD',
+					xrefId: null,
+				},
+			}, ],
+			INDI: [{
+				value: {
+					level: 0,
+					lineValue: null,
+					tag: 'INDI',
+					xrefId: '@I1@',
+
+				},
+			}, {
+				value: {
+					level: 0,
+					lineValue: null,
+					tag: 'INDI',
+					xrefId: '@I2@',
+				},
+
+				NAME: [{
 					value: {
-						level: 0,
-						lineValue: null,
-						tag: 'INDI',
-						xrefId: '@I1@',
-					},
-				}, ],
-			};
+						level: 1,
+						lineValue: 'Jane /Doe/',
+						tag: 'NAME',
 
-			const actualStructuredGedcom =   structureGedcom(gedcomLines);
-
-			expect(actualStructuredGedcom)
-				.toStrictEqual(expectedStructuredGedcom);
-		});
-	});
-
-	describe('when given gedcom lines with duplicate tag types', () => {
-		it('structures the gedcom', () => {
-			const gedcomLines = [
-				'0 HEAD',
-				'0 @I1@ INDI',
-				'0 @I2@ INDI',
-			];
-			const expectedStructuredGedcom = {
-				HEAD: [{
-					value: {
-						level: 0,
-						lineValue: null,
-						tag: 'HEAD',
 						xrefId: null,
 					},
-				}, ],
-				INDI: [{
-					value: {
-						level: 0,
-						lineValue: null,
-						tag: 'INDI',
-						xrefId: '@I1@',
-					},
-				}, {
-					value: {
-						level: 0,
-						lineValue: null,
-						tag: 'INDI',
-						xrefId: '@I2@',
-					},
-				}, ],
-
-			};
-
-			const actualStructuredGedcom =   structureGedcom(gedcomLines);
-
-			expect(actualStructuredGedcom)
-				.toStrictEqual(expectedStructuredGedcom);
-		});
-	});
-
-	describe('when given gedcom lines with a hierarchy', () => {
-		it('structures the gedcom', () => {
-			const gedcomLines = [
-				'0 HEAD',
-				'0 @I2@ INDI',
-				'1 NAME Jane /Doe/',
-			];
-			const expectedStructuredGedcom = {
-				HEAD: [{
-					value: {
-						level: 0,
-						lineValue: null,
-						tag: 'HEAD',
-						xrefId: null,
-					},
-				}, ],
-				INDI: [{
-					value: {
-						level: 0,
-						lineValue: null,
-						tag: 'INDI',
-						xrefId: '@I2@',
-
-					},
-					NAME: [{
+					GIVN: [{
 						value: {
-							level: 1,
-							lineValue: 'Jane /Doe/',
-							tag: 'NAME',
+							level: 2,
+							lineValue: 'Jane',
+							tag: 'GIVN',
 
 							xrefId: null,
 						},
 					}, ],
 				}, ],
-			};
-
-			const actualStructuredGedcom =   structureGedcom(gedcomLines);
-
-			expect(actualStructuredGedcom)
-				.toMatchObject(expectedStructuredGedcom);
-		});
-	});
-
-	describe(
-		'when given gedcom lines with duplicate tag types and a hierarchy',
-		() => {
-			it('structures the gedcom', () => {
-				const gedcomLines = [
-					'0 HEAD',
-					'0 @I1@ INDI',
-					'0 @I2@ INDI',
-					'1 NAME Jane /Doe/',
-					'2 GIVN Jane',
-					'0 @I3@ INDI',
-					'1 NAME John /Smith/',
-					'2 GIVN John',
-					'2 SURN Smith',
-				];
-				const expectedStructuredGedcom = {
-					HEAD: [{
+			}, {
+				value: {
+					level: 0,
+					lineValue: null,
+					tag: 'INDI',
+					xrefId: '@I3@',
+				},
+				NAME: [{
+					value: {
+						level: 1,
+						lineValue: 'John /Smith/',
+						tag: 'NAME',
+						xrefId: null,
+					},
+					GIVN: [{
 						value: {
-							level: 0,
-							lineValue: null,
-							tag: 'HEAD',
+							level: 2,
+							lineValue: 'John',
+							tag: 'GIVN',
+
 							xrefId: null,
 						},
 					}, ],
-					INDI: [{
+					SURN: [{
 						value: {
-							level: 0,
-							lineValue: null,
-							tag: 'INDI',
-							xrefId: '@I1@',
+							level: 2,
+							lineValue: 'Smith',
+							tag: 'SURN',
 
+							xrefId: null,
 						},
-					}, {
-						value: {
-							level: 0,
-							lineValue: null,
-							tag: 'INDI',
-							xrefId: '@I2@',
-						},
-
-						NAME: [{
-							value: {
-								level: 1,
-								lineValue: 'Jane /Doe/',
-								tag: 'NAME',
-
-								xrefId: null,
-							},
-							GIVN: [{
-								value: {
-									level: 2,
-									lineValue: 'Jane',
-									tag: 'GIVN',
-
-									xrefId: null,
-								},
-							}, ],
-						}, ],
-					}, {
-						value: {
-							level: 0,
-							lineValue: null,
-							tag: 'INDI',
-							xrefId: '@I3@',
-						},
-						NAME: [{
-							value: {
-								level: 1,
-								lineValue: 'John /Smith/',
-								tag: 'NAME',
-								xrefId: null,
-							},
-							GIVN: [{
-								value: {
-									level: 2,
-									lineValue: 'John',
-									tag: 'GIVN',
-
-									xrefId: null,
-								},
-							}, ],
-							SURN: [{
-								value: {
-									level: 2,
-									lineValue: 'Smith',
-									tag: 'SURN',
-
-									xrefId: null,
-								},
-							}, ],
-						}, ],
 					}, ],
-				};
+				}, ],
+			}, ],
+		},
+	};
 
-				const actualStructuredGedcom =   structureGedcom(gedcomLines);
+	describe('with an array of gedcom lines', () => {
+		it.each([
+			simpleGedcomCase,
+			multipleInstancesOfTagCase,
+			hierarchicalCase,
+			hierarchicalAndMultipleInstancesOfTagCase,
+		])('builds the expected structured gedcom', ({
+			gedcomLines,
+			expectedStructuredGedcom,
+		}) => {
+			const actualStructuredGedcom = structureGedcom(gedcomLines);
 
-				expect(actualStructuredGedcom)
-					.toMatchObject(expectedStructuredGedcom);
-			});
-		}
-	);
+			expect(actualStructuredGedcom)
+				.toStrictEqual(expectedStructuredGedcom);
+		});
+	});
 });

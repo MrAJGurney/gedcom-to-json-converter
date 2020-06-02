@@ -1,34 +1,31 @@
 'use strict';
 
-const structureGedcomLine = line => {
+const structureGedcomLine = gedcomLine => {
+	const lineComponents = gedcomLine.split(' ');
 	return {
-		level: getLevel(line),
-		xrefId: getXrefId(line),
-		tag: getTag(line),
-		lineValue: getLineValue(line),
+		level: getLevel(lineComponents),
+		xrefId: getXrefId(lineComponents),
+		tag: getTag(lineComponents),
+		lineValue: getLineValue(lineComponents),
 	};
 };
 
-const getLevel = line => {
-	const lineComponents = line.split(' ');
+const getLevel = lineComponents => {
 	const levelComponent = lineComponents[0];
 	return parseInt(levelComponent, 10);
 };
 
-const getXrefId = line => {
-	const lineComponents = line.split(' ');
+const getXrefId = lineComponents => {
 	const xrefIdComponent = lineComponents[1];
 	return isXrefId(xrefIdComponent) ? xrefIdComponent : null;
 };
 
-const getTag = line => {
-	const lineComponents = line.split(' ');
+const getTag = lineComponents => {
 	const tagComponentIndex = isXrefId(lineComponents[1]) ? 2 : 1;
 	return lineComponents[tagComponentIndex];
 };
 
-const getLineValue = line => {
-	const lineComponents = line.split(' ');
+const getLineValue = lineComponents => {
 	const lineValueComponentStartIndex = isXrefId(lineComponents[1]) ? 3 : 2;
 	return lineValueComponentStartIndex >= lineComponents.length
 		? null
