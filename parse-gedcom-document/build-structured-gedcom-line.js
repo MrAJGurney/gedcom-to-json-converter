@@ -1,6 +1,6 @@
 'use strict';
 
-const structureGedcomLine = gedcomLine => {
+const buildStructuredGedcomLine = gedcomLine => {
 	const lineComponents = gedcomLine.split(' ');
 	return {
 		level: getLevel(lineComponents),
@@ -43,5 +43,5 @@ const buildLineValue = (lineComponents, lineValueComponentStartIndex) => {
 };
 
 module.exports = {
-	structureGedcomLine,
+	buildStructuredGedcomLine,
 };

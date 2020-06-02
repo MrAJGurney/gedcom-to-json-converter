@@ -1,8 +1,8 @@
 'use strict';
 
 const {
-	structureGedcomLine,
-} = require('./structure-gedcom-line');
+	buildStructuredGedcomLine,
+} = require('./build-structured-gedcom-line');
 
 const xrefIdCase = {
 	gedcomLine: '0 @1234@ INDI',
@@ -12,6 +12,7 @@ const xrefIdCase = {
 		tag: 'INDI',
 		lineValue: null, },
 };
+
 const oneWordLineValueCase = {
 	gedcomLine: '1 AGE 13y',
 	expectedStructuredGedcomLine: {
@@ -40,18 +41,19 @@ const multipleWordLineValueCase = {
 	},
 };
 
-describe('structureGedcomLine', () => {
+describe('buildStructuredGedcomLine', () => {
 	describe('with a line of gedcom', () => {
 		it.each([
 			xrefIdCase,
 			oneWordLineValueCase,
 			xrefIdInLineValueCase,
 			multipleWordLineValueCase,
-		])('builds the expected structured gedcom', ({
+		])('builds the expected structured gedcom line', ({
 			gedcomLine,
 			expectedStructuredGedcomLine,
 		}) => {
-			const actualStructuredGedcomLine = structureGedcomLine(gedcomLine);
+			const actualStructuredGedcomLine
+				= buildStructuredGedcomLine(gedcomLine);
 
 			expect(actualStructuredGedcomLine)
 				.toStrictEqual(expectedStructuredGedcomLine);

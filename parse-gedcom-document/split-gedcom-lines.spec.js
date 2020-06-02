@@ -1,8 +1,8 @@
 'use strict';
 
-const { splitGedcom, } = require('./split-gedcom');
+const { splitGedcomLines, } = require('./split-gedcom-lines');
 
-describe('splitGedcom', () => {
+describe('splitGedcomLines', () => {
 	const generateGedcomDocumentWithLineSeperator = lineSeperator => {
 		return [
 			'',
@@ -36,7 +36,7 @@ describe('splitGedcom', () => {
 				const gedcomDocument
 					= generateGedcomDocumentWithLineSeperator(lineSeperator);
 
-				const actualLines = splitGedcom(gedcomDocument);
+				const actualLines = splitGedcomLines(gedcomDocument);
 
 				expect(actualLines).toStrictEqual(expectedLines);
 			}

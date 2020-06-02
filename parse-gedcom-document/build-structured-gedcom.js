@@ -1,11 +1,13 @@
 'use strict';
 
 const {
-	structureGedcomLine,
-} = require('./structure-gedcom-line');
+	buildStructuredGedcomLine,
+} = require('./build-structured-gedcom-line');
 
-const structureGedcom = gedcomLines => {
-	const structuredLines = gedcomLines.map(line => structureGedcomLine(line));
+const buildStructuredGedcom = gedcomLines => {
+	const structuredLines = gedcomLines.map(
+		line => buildStructuredGedcomLine(line)
+	);
 
 	const structuredGedcom = recursivelyStructureSections(structuredLines);
 
@@ -65,5 +67,5 @@ const lineHasChildLines = (structuredLines, lineIndex) => {
 };
 
 module.exports = {
-	structureGedcom,
+	buildStructuredGedcom,
 };

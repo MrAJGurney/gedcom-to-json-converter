@@ -1,6 +1,6 @@
 'use strict';
 
-const splitGedcom = gedcom => {
+const splitGedcomLines = gedcom => {
 	const gedcomLines = gedcom.split(/(\r\n|\n\r|\r|\n)/);
 
 	const nonEmptyGedcomLines = gedcomLines.filter(
@@ -11,5 +11,5 @@ const splitGedcom = gedcom => {
 };
 
 module.exports = {
-	splitGedcom,
+	splitGedcomLines,
 };

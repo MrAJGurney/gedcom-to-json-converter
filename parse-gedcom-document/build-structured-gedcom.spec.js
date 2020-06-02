@@ -1,8 +1,8 @@
 'use strict';
 
-const { structureGedcom, } = require('./structure-gedcom');
+const { buildStructuredGedcom, } = require('./build-structured-gedcom');
 
-describe('structureGedcom', () => {
+describe('buildStructuredGedcom', () => {
 	const simpleGedcomCase = {
 		gedcomLines: [
 			'0 HEAD',
@@ -198,7 +198,7 @@ describe('structureGedcom', () => {
 			gedcomLines,
 			expectedStructuredGedcom,
 		}) => {
-			const actualStructuredGedcom = structureGedcom(gedcomLines);
+			const actualStructuredGedcom = buildStructuredGedcom(gedcomLines);
 
 			expect(actualStructuredGedcom)
 				.toStrictEqual(expectedStructuredGedcom);

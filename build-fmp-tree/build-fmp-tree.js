@@ -1,8 +1,5 @@
 'use strict';
 
-const { structureGedcom, }
-	= require('./structure-gedcom/structure-gedcom');
-
 const { buildFmpPersonsIds, }
 	= require('./build-fmp-persons/build-fmp-persons-ids');
 const { buildFmpPersons, }
@@ -16,9 +13,7 @@ const { buildFmpFamilys, }
 const { buildFmpChilds, }
 	= require('./build-fmp-childs/build-fmp-childs');
 
-const buildFmpTree = gedcomLines => {
-	const structuredGedcom = structureGedcom(gedcomLines);
-
+const buildFmpTree = structuredGedcom => {
 	const fmpPersonsIds = buildFmpPersonsIds(structuredGedcom);
 
 	const fmpFamilysIds = buildFmpFamilysIds(structuredGedcom);
