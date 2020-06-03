@@ -1,5 +1,5 @@
 {
-  "name": "gedcom-parser",
+  "name": "gedcom-to-json-converter",
   "version": "1.0.0",
   "description": "convert family tree from gedcom format into FMP format",
   "main": "index.js",
