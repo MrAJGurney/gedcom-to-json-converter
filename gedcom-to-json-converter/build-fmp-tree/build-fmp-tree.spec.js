@@ -12,9 +12,6 @@ describe('buildFmpTree', () => {
 							GIVN: [
 								{
 									value: {
-										level: 2,
-										xrefId: null,
-										tag: 'GIVN',
 										lineValue: 'Reg',
 									},
 								},
@@ -22,27 +19,15 @@ describe('buildFmpTree', () => {
 							SURN: [
 								{
 									value: {
-										level: 2,
-										xrefId: null,
-										tag: 'SURN',
 										lineValue: 'Oyce',
 									},
 								},
 							],
-							value: {
-								level: 1,
-								xrefId: null,
-								tag: 'NAME',
-								lineValue: 'Reg /Oyce/',
-							},
 						},
 					],
 					SEX: [
 						{
 							value: {
-								level: 1,
-								xrefId: null,
-								tag: 'SEX',
 								lineValue: 'M',
 							},
 						},
@@ -52,27 +37,15 @@ describe('buildFmpTree', () => {
 							DATE: [
 								{
 									value: {
-										level: 2,
-										xrefId: null,
-										tag: 'DATE',
 										lineValue: '1 Jan 1990',
 									},
 								},
 							],
-							value: {
-								level: 1,
-								xrefId: null,
-								tag: 'BIRT',
-								lineValue: null,
-							},
 						},
 					],
 					FAMC: [
 						{
 							value: {
-								level: 1,
-								xrefId: null,
-								tag: 'FAMC',
 								lineValue: '@F1@',
 							},
 						},
@@ -84,34 +57,19 @@ describe('buildFmpTree', () => {
 									TIME: [
 										{
 											value: {
-												level: 3,
-												xrefId: null,
-												tag: 'TIME',
 												lineValue: '16:42:39',
 											},
 										},
 									],
 									value: {
-										level: 2,
-										xrefId: null,
-										tag: 'DATE',
 										lineValue: '15 APR 2020',
 									},
 								},
 							],
-							value: {
-								level: 1,
-								xrefId: null,
-								tag: 'CHAN',
-								lineValue: null,
-							},
 						},
 					],
 					value: {
-						level: 0,
 						xrefId: '@I1@',
-						tag: 'INDI',
-						lineValue: null,
 					},
 				},
 				{
@@ -120,9 +78,6 @@ describe('buildFmpTree', () => {
 							GIVN: [
 								{
 									value: {
-										level: 2,
-										xrefId: null,
-										tag: 'GIVN',
 										lineValue: 'Gladys',
 									},
 								},
@@ -130,50 +85,21 @@ describe('buildFmpTree', () => {
 							SURN: [
 								{
 									value: {
-										level: 2,
-										xrefId: null,
-										tag: 'SURN',
 										lineValue: 'Canby',
 									},
 								},
 							],
-							value: {
-								level: 1,
-								xrefId: null,
-								tag: 'NAME',
-								lineValue: 'Gladys /Canby/',
-							},
 						},
 					],
 					SEX: [
 						{
 							value: {
-								level: 1,
-								xrefId: null,
-								tag: 'SEX',
 								lineValue: 'F',
 							},
 						},
 					],
 					BIRT: [
-						{
-							value: {
-								level: 1,
-								xrefId: null,
-								tag: 'BIRT',
-								lineValue: null,
-							},
-						},
-					],
-					FAMS: [
-						{
-							value: {
-								level: 1,
-								xrefId: null,
-								tag: 'FAMS',
-								lineValue: '@F1@',
-							},
-						},
+						{},
 					],
 					CHAN: [
 						{
@@ -182,34 +108,19 @@ describe('buildFmpTree', () => {
 									TIME: [
 										{
 											value: {
-												level: 3,
-												xrefId: null,
-												tag: 'TIME',
 												lineValue: '16:43:06',
 											},
 										},
 									],
 									value: {
-										level: 2,
-										xrefId: null,
-										tag: 'DATE',
 										lineValue: '15 APR 2020',
 									},
 								},
 							],
-							value: {
-								level: 1,
-								xrefId: null,
-								tag: 'CHAN',
-								lineValue: null,
-							},
 						},
 					],
 					value: {
-						level: 0,
 						xrefId: '@I2@',
-						tag: 'INDI',
-						lineValue: null,
 					},
 				},
 				{
@@ -218,9 +129,6 @@ describe('buildFmpTree', () => {
 							GIVN: [
 								{
 									value: {
-										level: 2,
-										xrefId: null,
-										tag: 'GIVN',
 										lineValue: 'Hedda',
 									},
 								},
@@ -228,50 +136,21 @@ describe('buildFmpTree', () => {
 							SURN: [
 								{
 									value: {
-										level: 2,
-										xrefId: null,
-										tag: 'SURN',
 										lineValue: 'Hare',
 									},
 								},
 							],
-							value: {
-								level: 1,
-								xrefId: null,
-								tag: 'NAME',
-								lineValue: 'Hedda /Hare/',
-							},
 						},
 					],
 					SEX: [
 						{
 							value: {
-								level: 1,
-								xrefId: null,
-								tag: 'SEX',
 								lineValue: 'M',
 							},
 						},
 					],
 					BIRT: [
-						{
-							value: {
-								level: 1,
-								xrefId: null,
-								tag: 'BIRT',
-								lineValue: null,
-							},
-						},
-					],
-					FAMS: [
-						{
-							value: {
-								level: 1,
-								xrefId: null,
-								tag: 'FAMS',
-								lineValue: '@F1@',
-							},
-						},
+						{},
 					],
 					CHAN: [
 						{
@@ -280,34 +159,19 @@ describe('buildFmpTree', () => {
 									TIME: [
 										{
 											value: {
-												level: 3,
-												xrefId: null,
-												tag: 'TIME',
 												lineValue: '16:43:01',
 											},
 										},
 									],
 									value: {
-										level: 2,
-										xrefId: null,
-										tag: 'DATE',
 										lineValue: '15 APR 2020',
 									},
 								},
 							],
-							value: {
-								level: 1,
-								xrefId: null,
-								tag: 'CHAN',
-								lineValue: null,
-							},
 						},
 					],
 					value: {
-						level: 0,
 						xrefId: '@I3@',
-						tag: 'INDI',
-						lineValue: null,
 					},
 				},
 				{
@@ -316,9 +180,6 @@ describe('buildFmpTree', () => {
 							GIVN: [
 								{
 									value: {
-										level: 2,
-										xrefId: null,
-										tag: 'GIVN',
 										lineValue: 'Eileen',
 									},
 								},
@@ -326,17 +187,11 @@ describe('buildFmpTree', () => {
 							SURN: [
 								{
 									value: {
-										level: 2,
-										xrefId: null,
-										tag: 'SURN',
-										lineValue: 'Henderson',
+										lineValue: 'Dover',
 									},
 								},
 							],
 							value: {
-								level: 1,
-								xrefId: null,
-								tag: 'NAME',
 								lineValue: 'Eileen /Dover/',
 							},
 						},
@@ -344,20 +199,7 @@ describe('buildFmpTree', () => {
 					SEX: [
 						{
 							value: {
-								level: 1,
-								xrefId: null,
-								tag: 'SEX',
 								lineValue: 'M',
-							},
-						},
-					],
-					FAMC: [
-						{
-							value: {
-								level: 1,
-								xrefId: null,
-								tag: 'FAMC',
-								lineValue: '@F1@',
 							},
 						},
 					],
@@ -368,34 +210,19 @@ describe('buildFmpTree', () => {
 									TIME: [
 										{
 											value: {
-												level: 3,
-												xrefId: null,
-												tag: 'TIME',
 												lineValue: '16:44:00',
 											},
 										},
 									],
 									value: {
-										level: 2,
-										xrefId: null,
-										tag: 'DATE',
 										lineValue: '15 APR 2020',
 									},
 								},
 							],
-							value: {
-								level: 1,
-								xrefId: null,
-								tag: 'CHAN',
-								lineValue: null,
-							},
 						},
 					],
 					value: {
-						level: 0,
 						xrefId: '@I4@',
-						tag: 'INDI',
-						lineValue: null,
 					},
 				},
 			],
@@ -404,9 +231,6 @@ describe('buildFmpTree', () => {
 					HUSB: [
 						{
 							value: {
-								level: 1,
-								xrefId: null,
-								tag: 'HUSB',
 								lineValue: '@I1@',
 							},
 						},
@@ -414,9 +238,6 @@ describe('buildFmpTree', () => {
 					WIFE: [
 						{
 							value: {
-								level: 1,
-								xrefId: null,
-								tag: 'WIFE',
 								lineValue: '@I2@',
 							},
 						},
@@ -424,17 +245,11 @@ describe('buildFmpTree', () => {
 					CHIL: [
 						{
 							value: {
-								level: 1,
-								xrefId: null,
-								tag: 'CHIL',
 								lineValue: '@I3@',
 							},
 						},
 						{
 							value: {
-								level: 1,
-								xrefId: null,
-								tag: 'CHIL',
 								lineValue: '@I4@',
 							},
 						},
@@ -446,34 +261,19 @@ describe('buildFmpTree', () => {
 									TIME: [
 										{
 											value: {
-												level: 3,
-												xrefId: null,
-												tag: 'TIME',
 												lineValue: '16:43:01',
 											},
 										},
 									],
 									value: {
-										level: 2,
-										xrefId: null,
-										tag: 'DATE',
 										lineValue: '15 APR 2020',
 									},
 								},
 							],
-							value: {
-								level: 1,
-								xrefId: null,
-								tag: 'CHAN',
-								lineValue: null,
-							},
 						},
 					],
 					value: {
-						level: 0,
 						xrefId: '@F1@',
-						tag: 'FAM',
-						lineValue: null,
 					},
 				},
 			],
@@ -553,7 +353,7 @@ describe('buildFmpTree', () => {
 						{
 							FactTypeId: 100,
 							GivenNames: 'Eileen',
-							Surnames: 'Henderson',
+							Surnames: 'Dover',
 						},
 					],
 				},
