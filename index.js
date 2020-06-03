@@ -1,25 +1,8 @@
 'use strict';
 
-const { parseGedcomDocument, }
-	= require('./parse-gedcom-document/parse-gedcom-document');
+const { gedcomToJsonConverter, }
+	= require('./gedcom-to-json-converter/gedcom-to-json-converter.js');
 
-const { buildFmpTree, }
-	= require('./build-fmp-tree/build-fmp-tree');
+const [folder, ] = process.argv.slice(2);
 
-const fs = require('fs');
-
-const main = (inputFileName, outputFileName) => {
-	const gedcomDocument = fs.readFileSync(inputFileName, 'utf8');
-
-	const structuredGedcom = parseGedcomDocument(gedcomDocument);
-
-	const fmpTree = buildFmpTree(structuredGedcom);
-
-	const stringifiedFmpTree = JSON.stringify(fmpTree, null, 2);
-	fs.unlinkSync(outputFileName);
-	fs.writeFileSync(outputFileName, stringifiedFmpTree);
-};
-
-const [inputFileName, outputFileName, ] =  process.argv.slice(2);
-
-main(inputFileName, outputFileName);
+gedcomToJsonConverter(folder);
